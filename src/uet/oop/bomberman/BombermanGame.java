@@ -11,6 +11,7 @@ public class BombermanGame extends Application {
         stage.setScene(MapSetup.getScene());
         stage.show();
         /* abc */
+        //dasdasd
     }
 
     public static void main(String[] args) {
