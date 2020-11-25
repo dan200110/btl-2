@@ -26,13 +26,13 @@ public class Balloon extends Entity{
 
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
-                    if (((Wall) stillObject.get(i)).isImpactWallvsMonster((Balloon)this) == 1) {
+                    if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Balloon)this) == 1) {
                         y = y + 0.5;
                         return;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
-                    if (((Brick) stillObject.get(i)).isImpactBrickvsMonster((Balloon) this) == 1) {
+                    if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Balloon) this) == 1) {
                         y = y + 0.5;
                         return;
                     }
@@ -53,13 +53,13 @@ public class Balloon extends Entity{
 
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
-                    if (((Wall) stillObject.get(i)).isImpactWallvsMonster((Balloon)this) == 1) {
+                    if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Balloon)this) == 1) {
                         y = y - 0.5;
                         return;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
-                    if (((Brick) stillObject.get(i)).isImpactBrickvsMonster((Balloon)this) == 1) {
+                    if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Balloon)this) == 1) {
                         y = y - 0.5;
                         return;
                     }
@@ -71,13 +71,13 @@ public class Balloon extends Entity{
 
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
-                    if (((Wall) stillObject.get(i)).isImpactWallvsMonster((Balloon)this) == 1) {
+                    if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Balloon)this) == 1) {
                         x = x + 0.5;
                         return;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
-                    if (((Brick) stillObject.get(i)).isImpactBrickvsMonster((Balloon)this) == 1) {
+                    if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Balloon)this) == 1) {
                         x = x + 0.5;
                         return;
                     }
@@ -89,13 +89,13 @@ public class Balloon extends Entity{
 
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
-                    if (((Wall) stillObject.get(i)).isImpactWallvsMonster((Balloon)this) == 1) {
+                    if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Balloon)this) == 1) {
                         x = x - 0.5;
                         return;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
-                    if (((Brick) stillObject.get(i)).isImpactBrickvsMonster((Balloon)this) == 1) {
+                    if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Balloon)this) == 1) {
                         x = x - 0.5;
                         return;
                     }
