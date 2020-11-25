@@ -10,8 +10,6 @@ public class BombermanGame extends Application {
         MapSetup.init();
         stage.setScene(MapSetup.getScene());
         stage.show();
-        /* abc */
-        //dasdasd
     }
 
     public static void main(String[] args) {
