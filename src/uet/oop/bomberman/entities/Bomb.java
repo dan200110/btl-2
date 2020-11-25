@@ -59,7 +59,8 @@ public class Bomb extends Entity {
                     if (Math.abs(((int) MapSetup.getStillObjects().get(i).getX() - (int) this.getX())) <= 1 * sizeBomb
                             && (int) MapSetup.getStillObjects().get(i).getY() == (int) this.getY())
                         MapSetup.getStillObjects().remove(i);
-                }  if (MapSetup.getStillObjects().get(i) instanceof Brick) {
+                }
+                if (MapSetup.getStillObjects().get(i) instanceof Brick) {
                     if (Math.abs((int) MapSetup.getStillObjects().get(i).getY() - (int) this.getY()) <= 1 * sizeBomb
                             && (int) MapSetup.getStillObjects().get(i).getX() == (int) this.getX())
                         MapSetup.getStillObjects().remove(i);
