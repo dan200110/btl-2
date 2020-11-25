@@ -2,12 +2,21 @@ package uet.oop.bomberman.entities;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Bomb extends Entity {
     private double width, height;
     private int deadlineBomb = 2000 / 16;
+    private int deadlinebombExploding = 100 / 16;
+    private int deadlinebrickBreaking = 100 / 16;
     public static int sizeBomb = 1;
+    private boolean isExploded = false;
+    private List<Boolean> isBroke = new ArrayList<>();
     public Bomb(double x, double y, Image img) {
         super(x, y, img);
         this.width = img.getWidth();
@@ -38,9 +47,11 @@ public class Bomb extends Entity {
     @Override
     public void update() {
         deadlineBomb--;
-        // hoat anh
+        // hoat anh bom
+        img = Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, deadlineBomb, Gameloop.time).getFxImage();
+
         if (deadlineBomb == 0) {
-            MapSetup.getEntities().remove(this);
+            isExploded = true;
             // tao lua
 
             for (int i = 0; i < MapSetup.getStillObjects().size(); i++) {
@@ -48,16 +59,23 @@ public class Bomb extends Entity {
                     if (Math.abs(((int) MapSetup.getStillObjects().get(i).getX() - (int) this.getX())) <= 1 * sizeBomb
                             && (int) MapSetup.getStillObjects().get(i).getY() == (int) this.getY())
                         MapSetup.getStillObjects().remove(i);
-                }
-                if (MapSetup.getStillObjects().get(i) instanceof Brick) {
+                } else if (MapSetup.getStillObjects().get(i) instanceof Brick) {
                     if (Math.abs((int) MapSetup.getStillObjects().get(i).getY() - (int) this.getY()) <= 1 * sizeBomb
                             && (int) MapSetup.getStillObjects().get(i).getX() == (int) this.getX())
-
                         MapSetup.getStillObjects().remove(i);
                 }
             }
         }
 
+        // hoat anh bom no
+        if (isExploded) {
+            img = Sprite.movingSprite(Sprite.bomb_exploded, Sprite.bomb_exploded1, Sprite.bomb_exploded2, deadlinebombExploding, Gameloop.time).getFxImage();
+            deadlinebombExploding--;
+            System.out.println(deadlinebombExploding);
+        }
+        if (deadlinebombExploding == 0) {
+            MapSetup.getEntities().remove(this);
+        }
     }
 
     public double getX() {
