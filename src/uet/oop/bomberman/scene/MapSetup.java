@@ -66,7 +66,7 @@ public class MapSetup {
                             break;
                         case 'f':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
-                            stillObjects.add(new Item(x, y, Sprite.powerup_flames.getFxImage()));
+                            stillObjects.add(new Item(x, y, Sprite.powerup_flames.getFxImage(), "f"));
                             stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
                             brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
                             break;

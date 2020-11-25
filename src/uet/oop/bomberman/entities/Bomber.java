@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bomber extends Entity {
-    private double speed = 0.5;
+    private int speed = 1;
     public static int ALLOW_RUN = 0;
     public static int DISALLOW_RUN = 1;
 
@@ -47,6 +47,7 @@ public class Bomber extends Entity {
                 if (stillObject.get(i) instanceof Item){
                     if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
                         MapSetup.getStillObjects().remove(i);
+                        Bomb.sizeBomb++;
                     }
                 }
             }
