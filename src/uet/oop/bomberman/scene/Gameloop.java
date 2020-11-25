@@ -13,6 +13,9 @@ public class Gameloop {
         for(int i = 0; i < MapSetup.getEntities().size(); i++) {
             MapSetup.getEntities().get(i).update();
         }
+        for(int i = 0; i < MapSetup.getStillObjects().size(); i++) {
+            MapSetup.getStillObjects().get(i).update();
+        }
         //MapSetup.getEntities().forEach(Entity::update);
     }
 

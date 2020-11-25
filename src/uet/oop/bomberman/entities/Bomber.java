@@ -52,6 +52,7 @@ public class Bomber extends Entity {
                 }
             }
 
+            /*
             for (int i = 0; i < entities.size(); i++) {
                 if (entities.get(i) instanceof Bomb) {
                     if (((Bomb) entities.get(i)).isImpactBombvsMonster((Bomber) this) == 1) {
@@ -60,6 +61,7 @@ public class Bomber extends Entity {
                     }
                 }
             }
+             */
             img = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, Gameloop.animate, Gameloop.time).getFxImage();
         } else if (key == KeyCode.DOWN) {
             y = y + 0.1;
