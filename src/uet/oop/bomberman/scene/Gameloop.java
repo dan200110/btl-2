@@ -6,6 +6,8 @@ import uet.oop.bomberman.controls.PlayerController;
 import uet.oop.bomberman.entities.Entity;
 
 public class Gameloop {
+    public static int time = 10;
+    public static int animate;
     private static void update() {
         PlayerController.handlePlayerMovements();
         for(int i = 0; i < MapSetup.getEntities().size(); i++) {
@@ -26,6 +28,8 @@ public class Gameloop {
             public void handle(long l) {
                 render(gc);
                 update();
+                if (animate < time) animate++;
+                else animate = 0;
             }
         };
         timer.start();
