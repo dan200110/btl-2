@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.scene.MapSetup;
-
+import uet.oop.bomberman.entities.Bomb;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +43,11 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
+                if (stillObject.get(i) instanceof Item){
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
+                        MapSetup.getStillObjects().remove(i);
+                    }
+                }
             }
 
             for (int i = 0; i < entities.size(); i++) {
@@ -69,6 +74,12 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
+                if (stillObject.get(i) instanceof Item){
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
+                        MapSetup.getStillObjects().remove(i);
+
+                    }
+                }
             }
             img = Sprite.player_down.getFxImage();
         } else if (key == KeyCode.LEFT) {
@@ -87,6 +98,11 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
+                if (stillObject.get(i) instanceof Item){
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
+                        MapSetup.getStillObjects().remove(i);
+                    }
+                }
             }
             img = Sprite.player_left.getFxImage();
         } else if (key == KeyCode.RIGHT) {
@@ -103,6 +119,11 @@ public class Bomber extends Entity {
                     if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Bomber)this) == 1) {
                         x = x - 0.1;
                         return;
+                    }
+                }
+                if (stillObject.get(i) instanceof Item){
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
+                        MapSetup.getStillObjects().remove(i);
                     }
                 }
             }

@@ -7,7 +7,7 @@ import uet.oop.bomberman.scene.MapSetup;
 public class Bomb extends Entity {
     private double width, height;
     private int deadlineBomb = 2000 / 16;
-
+    public static int sizeBomb = 1;
     public Bomb(double x, double y, Image img) {
         super(x, y, img);
         this.width = img.getWidth();
@@ -35,12 +35,12 @@ public class Bomb extends Entity {
 
             for (int i = 0; i < MapSetup.getStillObjects().size(); i++) {
                 if (MapSetup.getStillObjects().get(i) instanceof Brick) {
-                    if (Math.abs(((int) MapSetup.getStillObjects().get(i).getX() - (int) this.getX())) <= 1
+                    if (Math.abs(((int) MapSetup.getStillObjects().get(i).getX() - (int) this.getX())) <= 1 * sizeBomb
                             && (int) MapSetup.getStillObjects().get(i).getY() == (int) this.getY())
                         MapSetup.getStillObjects().remove(i);
                 }
                 if (MapSetup.getStillObjects().get(i) instanceof Brick) {
-                    if (Math.abs((int) MapSetup.getStillObjects().get(i).getY() - (int) this.getY()) <= 1
+                    if (Math.abs((int) MapSetup.getStillObjects().get(i).getY() - (int) this.getY()) <= 1 * sizeBomb
                             && (int) MapSetup.getStillObjects().get(i).getX() == (int) this.getX())
 
                         MapSetup.getStillObjects().remove(i);
