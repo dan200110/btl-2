@@ -13,10 +13,8 @@ public class Bomb extends Entity {
     private double width, height;
     private int deadlineBomb = 2000 / 16;
     private int deadlinebombExploding = 100 / 16;
-    private int deadlinebrickBreaking = 100 / 16;
     public static int sizeBomb = 1;
     private boolean isExploded = false;
-    private List<Boolean> isBroke = new ArrayList<>();
     public Bomb(double x, double y, Image img) {
         super(x, y, img);
         this.width = img.getWidth();
@@ -58,12 +56,12 @@ public class Bomb extends Entity {
                 if (MapSetup.getStillObjects().get(i) instanceof Brick) {
                     if (Math.abs(((int) MapSetup.getStillObjects().get(i).getX() - (int) this.getX())) <= 1 * sizeBomb
                             && (int) MapSetup.getStillObjects().get(i).getY() == (int) this.getY())
-                        MapSetup.getStillObjects().remove(i);
+                        ((Brick) MapSetup.getStillObjects().get(i)).changeisBreaking();
                 }
                 if (MapSetup.getStillObjects().get(i) instanceof Brick) {
                     if (Math.abs((int) MapSetup.getStillObjects().get(i).getY() - (int) this.getY()) <= 1 * sizeBomb
                             && (int) MapSetup.getStillObjects().get(i).getX() == (int) this.getX())
-                        MapSetup.getStillObjects().remove(i);
+                        ((Brick) MapSetup.getStillObjects().get(i)).changeisBreaking();
                 }
             }
         }

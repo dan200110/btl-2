@@ -4,8 +4,14 @@ import javafx.scene.image.Image;
 
 import java.awt.*;
 import javafx.geometry.Rectangle2D;
+import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.scene.Gameloop;
+import uet.oop.bomberman.scene.MapSetup;
+
 public class Brick extends Entity {
     private double width, height;
+    public boolean isBreaking = false;
+    private int deadlinebrickBreaking = 100 / 16;
 
     public Brick(double x, double y, Image img) {
         super(x, y, img);
@@ -27,7 +33,14 @@ public class Brick extends Entity {
     }
     @Override
     public void update() {
-
+        if (isBreaking) {
+            img = Sprite.movingSprite(Sprite.brick_exploded, Sprite.brick_exploded1, Sprite.brick_exploded2, deadlinebrickBreaking, Gameloop.time).getFxImage();
+            deadlinebrickBreaking--;
+            System.out.println(deadlinebrickBreaking);
+        }
+        if (deadlinebrickBreaking == 0) {
+            MapSetup.getStillObjects().remove(this);
+        }
     }
     public double getX() {
         return x;
@@ -43,6 +56,13 @@ public class Brick extends Entity {
 
     public double getHeight() {
         return height;
+    }
+
+    public void changeisBreaking() {
+        if (isBreaking == false) isBreaking = true;
+        else {
+            isBreaking = false;
+        }
     }
 }
 
