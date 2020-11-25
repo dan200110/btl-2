@@ -26,6 +26,7 @@ public class MapSetup {
     private static List<Entity> stillObjects = new ArrayList<>();
     private static ArrayList<Brick> brickArrayList = new ArrayList<>();
     private static ArrayList<Wall> wallArrayList = new ArrayList<>();
+    private static List<Balloon> balloonList = new ArrayList<>();
     public static int WIDTH = 31 ;
     public static int HEIGHT = 13;
 
@@ -53,6 +54,7 @@ public class MapSetup {
                         case '1':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
                             entities.add(new Balloon(x, y, Sprite.balloom_left1.getFxImage()));
+                            balloonList.add(new Balloon(x, y, Sprite.balloom_left1.getFxImage()));
                             break;
                         case '2':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
@@ -108,6 +110,8 @@ public class MapSetup {
     public static List<Entity> getStillObjects() {
         return stillObjects;
     }
-    public static ArrayList<Brick> getstillObject() {return brickArrayList;}
+    public static List<Balloon> getBalloonList(){
+        return balloonList;
+    }
     public static ArrayList<Wall> getWallArrayList() {return wallArrayList;}
 }

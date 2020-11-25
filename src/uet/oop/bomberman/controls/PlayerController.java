@@ -2,6 +2,7 @@ package uet.oop.bomberman.controls;
 
 import javafx.scene.input.KeyCode;
 import uet.oop.bomberman.BombermanGame;
+import uet.oop.bomberman.entities.Balloon;
 import uet.oop.bomberman.entities.Bomb;
 import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
@@ -15,9 +16,8 @@ public class PlayerController {
     public static void handlePlayerMovements() {
         List keyboardInputs = KeyController.getUserInput();
         Bomber player = MapSetup.getBomber();
-
         if (keyboardInputs.contains(KeyCode.UP)) {
-            player.move(KeyCode.UP, MapSetup.getStillObjects(), MapSetup.getStillObjects());
+            player.move(KeyCode.UP, MapSetup.getStillObjects(), MapSetup.getEntities());
         }
         if (keyboardInputs.contains(KeyCode.DOWN)) {
             player.move(KeyCode.DOWN,MapSetup.getStillObjects(), MapSetup.getEntities());

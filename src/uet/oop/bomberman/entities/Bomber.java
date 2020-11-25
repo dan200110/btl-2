@@ -6,7 +6,7 @@ import javafx.scene.input.*;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
-import uet.oop.bomberman.entities.Bomb;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,13 +33,13 @@ public class Bomber extends Entity {
             System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
-                    if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Bomber)this) == 1) {
+                    if (((Wall) stillObject.get(i)).isImpactWallvsMonster((Bomber)this) == 1) {
                         y = y + 0.1;
                         return;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
-                    if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Bomber)this) == 1) {
+                    if (((Brick) stillObject.get(i)).isImpactBrickvsMonster((Bomber)this) == 1) {
                         y = y + 0.1;
                         return;
                     }
@@ -54,7 +54,7 @@ public class Bomber extends Entity {
 
             for (int i = 0; i < entities.size(); i++) {
                 if (entities.get(i) instanceof Bomb) {
-                    if (((Bomb) entities.get(i)).isImpactBombvsBomber((Bomber) this) == 1) {
+                    if (((Bomb) entities.get(i)).isImpactBombvsMonster((Bomber) this) == 1) {
                         y = y + 0.1;
                         return;
                     }
@@ -66,13 +66,13 @@ public class Bomber extends Entity {
             System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
-                    if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Bomber)this) == 1) {
+                    if (((Wall) stillObject.get(i)).isImpactWallvsMonster((Bomber)this) == 1) {
                         y = y - 0.1;
                         return;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
-                    if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Bomber)this) == 1) {
+                    if (((Brick) stillObject.get(i)).isImpactBrickvsMonster((Bomber)this) == 1) {
                         y = y - 0.1;
                         return;
                     }
@@ -90,13 +90,13 @@ public class Bomber extends Entity {
             System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
-                    if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Bomber)this) == 1) {
+                    if (((Wall) stillObject.get(i)).isImpactWallvsMonster((Bomber)this) == 1) {
                         x = x + 0.1;
                         return;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
-                    if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Bomber)this) == 1) {
+                    if (((Brick) stillObject.get(i)).isImpactBrickvsMonster((Bomber)this) == 1) {
                         x = x + 0.1;
                         return;
                     }
@@ -113,13 +113,13 @@ public class Bomber extends Entity {
             System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
-                    if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Bomber)this) == 1) {
+                    if (((Wall) stillObject.get(i)).isImpactWallvsMonster((Bomber)this) == 1) {
                         x = x - 0.1;
                         return;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
-                    if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Bomber)this) == 1) {
+                    if (((Brick) stillObject.get(i)).isImpactBrickvsMonster((Bomber)this) == 1) {
                         x = x - 0.1;
                         return;
                     }

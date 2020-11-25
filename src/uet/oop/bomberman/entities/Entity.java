@@ -1,12 +1,9 @@
 package uet.oop.bomberman.entities;
 
-import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import uet.oop.bomberman.graphics.Sprite;
-import javafx.scene.input.*;
+
 import java.util.ArrayList;
 
 public abstract class Entity {
@@ -53,13 +50,13 @@ public abstract class Entity {
                 }
                 x=x-0.1;
                 for(int i=0;i<arrBomb.size();i++){
-                    if(arrBomb.get(i).isImpactWallvsBomber((Bomber) this)==1){
+                    if(arrBomb.get(i).isImpactWallvsMonster((Bomber) this)==1){
                         x=x+0.1;
                         return false;
                     }
                 }
                 for(int i=0;i<arrBox.size();i++){
-                    int kq = arrBox.get(i).isImpactBrickvsBomber((Bomber) this);
+                    int kq = arrBox.get(i).isImpactBrickvsMonster((Bomber) this);
                     if(kq!=0){
                         if(kq>=-20 && kq<=20){
                             if(kq>0){
@@ -79,13 +76,13 @@ public abstract class Entity {
                 }
                 x=x+0.1;
                 for(int i=0;i<arrBomb.size();i++){
-                    if(arrBomb.get(i).isImpactWallvsBomber((Bomber) this)==1){
+                    if(arrBomb.get(i).isImpactWallvsMonster((Bomber) this)==1){
                         x=x-0.1;
                         return false;
                     }
                 }
                 for(int i=0;i<arrBox.size();i++){
-                    int kq = arrBox.get(i).isImpactBrickvsBomber((Bomber) this);
+                    int kq = arrBox.get(i).isImpactBrickvsMonster((Bomber) this);
                     if(kq!=0){
                         if(kq>=-20 && kq<=20){
                             if(kq>0){
@@ -105,13 +102,13 @@ public abstract class Entity {
                 }
                 y=y-0.1;
                 for(int i=0;i<arrBomb.size();i++){
-                    if(arrBomb.get(i).isImpactWallvsBomber((Bomber) this)==1){
+                    if(arrBomb.get(i).isImpactWallvsMonster((Bomber) this)==1){
                         y=y+0.1;
                         return false;
                     }
                 }
                 for(int i=0;i<arrBox.size();i++){
-                    int kq = arrBox.get(i).isImpactBrickvsBomber((Bomber) this);
+                    int kq = arrBox.get(i).isImpactBrickvsMonster((Bomber) this);
                     if(kq!=0){
                         if(kq>=-20 && kq<=20){
                             if(kq>0){
@@ -131,13 +128,13 @@ public abstract class Entity {
                 }
                 y=y+0.1;
                 for(int i=0;i<arrBomb.size();i++){
-                    if(arrBomb.get(i).isImpactWallvsBomber((Bomber) this)==1){
+                    if(arrBomb.get(i).isImpactWallvsMonster((Bomber) this)==1){
                         y=y-0.1;
                         return false;
                     }
                 }
                 for(int i=0;i<arrBox.size();i++){
-                    int kq = arrBox.get(i).isImpactBrickvsBomber((Bomber) this);
+                    int kq = arrBox.get(i).isImpactBrickvsMonster((Bomber) this);
                     if(kq!=0){
                         if(kq>=-20 && kq<=20){
                             if(kq>0){
