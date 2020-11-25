@@ -52,16 +52,16 @@ public class Bomber extends Entity {
                 }
             }
 
-            /*
-            for (int i = 0; i < entities.size(); i++) {
-                if (entities.get(i) instanceof Bomb) {
-                    if (((Bomb) entities.get(i)).isImpactBombvsBomber((Bomber) this) == 1) {
-                        y = y + 0.1;
-                        return;
-                    }
-                }
-            }
-             */
+
+//            for (int i = 0; i < entities.size(); i++) {
+//                if (entities.get(i) instanceof Bomb) {
+//                    if (((Bomb) entities.get(i)).isImpactBombvsBomber((Bomber) this) == 1) {
+//                        y = y + 0.1;
+//                        return;
+//                    }
+//                }
+//            }
+
             img = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, Gameloop.animate, Gameloop.time).getFxImage();
         } else if (key == KeyCode.DOWN) {
             y = y + 0.1;

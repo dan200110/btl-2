@@ -8,12 +8,13 @@ import uet.oop.bomberman.scene.MapSetup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Bomb extends Entity {
     private double width, height;
     private int deadlineBomb = 2000 / 16;
     private int deadlinebombExploding = 100 / 16;
-    public static int sizeBomb = 1;
+    public static int sizeBomb = 2;
     private boolean isExploded = false;
     public Bomb(double x, double y, Image img) {
         super(x, y, img);
@@ -52,6 +53,16 @@ public class Bomb extends Entity {
         if (deadlineBomb == 0) {
             isExploded = true;
             // tao lua
+            /* Y tuong:
+            - Lua chay theo 4 huong
+            + Gap tuong thi dung lai
+            + Gap brick thi Brick.destroy() va dung lai
+            + Gap bomb thi no bomb va dung lai
+            */
+            for(int i = 0; i < 4; i++) {
+                makeFire(i);
+                System.out.println("Make fire");
+            }
 
             for (int i = 0; i < MapSetup.getStillObjects().size(); i++) {
                 if (MapSetup.getStillObjects().get(i) instanceof Brick) {
@@ -71,7 +82,7 @@ public class Bomb extends Entity {
         if (isExploded) {
             img = Sprite.movingSprite(Sprite.bomb_exploded, Sprite.bomb_exploded1, Sprite.bomb_exploded2, deadlinebombExploding, Gameloop.time).getFxImage();
             deadlinebombExploding--;
-            System.out.println(deadlinebombExploding);
+            //System.out.println(deadlinebombExploding);
         }
         if (deadlinebombExploding == 0) {
             MapSetup.getEntities().remove(this);
@@ -92,5 +103,53 @@ public class Bomb extends Entity {
 
     public double getHeight() {
         return height;
+    }
+
+    //--
+    private void makeFire(int direct) {
+        int vertical = 0, horizotal = 0;
+        boolean stop = false;
+        for(int j = 1; j <= sizeBomb; j++) {
+            Image img = Sprite.grass.getFxImage();
+            switch (direct) {
+                case 0: // up
+                    vertical = -1;
+                    if(j == sizeBomb) img = Sprite.explosion_vertical_top_last.getFxImage();
+                    else img = Sprite.explosion_vertical.getFxImage();
+                    break;
+                case 1: // down
+                    vertical = 1;
+                    if(j == sizeBomb) img = Sprite.explosion_vertical_down_last.getFxImage();
+                    else img = Sprite.explosion_vertical.getFxImage();
+                    break;
+                case 2: // right
+                    horizotal = 1;
+                    if(j == sizeBomb) img = Sprite.explosion_horizontal_right_last.getFxImage();
+                    else img = Sprite.explosion_horizontal.getFxImage();
+                    break;
+                case 3: // left
+                    horizotal = -1;
+                    if(j == sizeBomb) img = Sprite.explosion_horizontal_left_last.getFxImage();
+                    else img = Sprite.explosion_horizontal.getFxImage();
+                    break;
+            }
+            Flame flame = new Flame((int) x + horizotal*j, (int) y + vertical*j, img);
+            //Rectangle2D flameRect = new Rectangle2D((int)flame.x, (int)flame.y , Sprite.SCALED_SIZE, Sprite.SCALED_SIZE);
+            for(int k = 0; k < MapSetup.getStillObjects().size(); k++) {
+                Entity still = MapSetup.getStillObjects().get(k);
+
+                if((int)flame.x == (int)still.getX() && (int)flame.y == (int)still.getY()) {
+                        if (still instanceof Wall || still instanceof Brick) {
+                            stop = true;
+                            break;
+                        }
+                }
+                //if(flameRect.intersects(new Rectangle2D(still.x, still.y, Sprite.SCALED_SIZE, Sprite.SCALED_SIZE))) {
+            }
+            if(!stop) {
+                MapSetup.getStillObjects().add(flame);
+            }
+            else break;
+        }
     }
 }
