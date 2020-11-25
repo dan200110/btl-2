@@ -13,7 +13,7 @@ import java.util.Map;
 public class Bomb extends Entity {
     private double width, height;
     private int deadlineBomb = 2000 / 16;
-    private int deadlinebombExploding = 100 / 16;
+    private int deadlinebombExploding = 500 / 16;
     public static int sizeBomb = 2;
     private boolean isExploded = false;
     public Bomb(double x, double y, Image img) {
@@ -64,7 +64,7 @@ public class Bomb extends Entity {
                 System.out.println("Make fire");
             }
 
-            for (int i = 0; i < MapSetup.getStillObjects().size(); i++) {
+            /*for (int i = 0; i < MapSetup.getStillObjects().size(); i++) {
                 if (MapSetup.getStillObjects().get(i) instanceof Brick) {
                     if (Math.abs(((int) MapSetup.getStillObjects().get(i).getX() - (int) this.getX())) <= 1 * sizeBomb
                             && (int) MapSetup.getStillObjects().get(i).getY() == (int) this.getY())
@@ -75,7 +75,7 @@ public class Bomb extends Entity {
                             && (int) MapSetup.getStillObjects().get(i).getX() == (int) this.getX())
                         ((Brick) MapSetup.getStillObjects().get(i)).changeisBreaking();
                 }
-            }
+            }*/
         }
 
         // hoat anh bom no
@@ -85,7 +85,7 @@ public class Bomb extends Entity {
             //System.out.println(deadlinebombExploding);
         }
         if (deadlinebombExploding == 0) {
-            MapSetup.getEntities().remove(this);
+            MapSetup.getStillObjects().remove(this);
         }
     }
 
@@ -137,12 +137,16 @@ public class Bomb extends Entity {
             //Rectangle2D flameRect = new Rectangle2D((int)flame.x, (int)flame.y , Sprite.SCALED_SIZE, Sprite.SCALED_SIZE);
             for(int k = 0; k < MapSetup.getStillObjects().size(); k++) {
                 Entity still = MapSetup.getStillObjects().get(k);
-
                 if((int)flame.x == (int)still.getX() && (int)flame.y == (int)still.getY()) {
-                        if (still instanceof Wall || still instanceof Brick) {
-                            stop = true;
-                            break;
-                        }
+                    if (still instanceof Wall || still instanceof Brick) {
+                        stop = true;
+                        break;
+                    }
+                    if (still instanceof Bomb) {
+                        ((Bomb) still).deadlineBomb = 1;
+                        stop = true;
+                        break;
+                    }
                 }
                 //if(flameRect.intersects(new Rectangle2D(still.x, still.y, Sprite.SCALED_SIZE, Sprite.SCALED_SIZE))) {
             }

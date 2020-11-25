@@ -30,15 +30,15 @@ public class PlayerController {
         }
         if (keyboardInputs.contains(KeyCode.SPACE)) {
             boolean exist = false;
-            for(int i = 0; i < MapSetup.getEntities().size(); i++) {
-                if(MapSetup.getEntities().get(i) instanceof Bomb
-                        && (int) Math.round(MapSetup.getEntities().get(i).getX()) == (int) Math.round(player.getX())
-                        && (int) Math.round(MapSetup.getEntities().get(i).getY()) == (int) Math.round(player.getY())) {
+            for(int i = 0; i < MapSetup.getStillObjects().size(); i++) {
+                if(MapSetup.getStillObjects().get(i) instanceof Bomb
+                        && (int) Math.round(MapSetup.getStillObjects().get(i).getX()) == (int) Math.round(player.getX())
+                        && (int) Math.round(MapSetup.getStillObjects().get(i).getY()) == (int) Math.round(player.getY())) {
                     exist = true;
                 }
                 if(exist) break;
             }
-            if(!exist) MapSetup.getEntities().add(new Bomb(Math.round(player.getX()), Math.round(player.getY()), Sprite.bomb.getFxImage()));
+            if(!exist) MapSetup.getStillObjects().add(new Bomb(Math.round(player.getX()), Math.round(player.getY()), Sprite.bomb.getFxImage()));
         }
     }
 
