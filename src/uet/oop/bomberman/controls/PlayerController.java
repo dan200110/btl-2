@@ -38,7 +38,10 @@ public class PlayerController {
                 }
                 if(exist) break;
             }
-            if(!exist) MapSetup.getStillObjects().add(new Bomb(Math.round(player.getX()), Math.round(player.getY()), Sprite.bomb.getFxImage()));
+            if(!exist && Bomb.countBomb < 2) {
+                MapSetup.getStillObjects().add(new Bomb(Math.round(player.getX()), Math.round(player.getY()), Sprite.bomb.getFxImage()));
+                Bomb.countBomb++;
+            }
         }
     }
 

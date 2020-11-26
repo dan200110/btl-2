@@ -15,6 +15,7 @@ public class Bomb extends Entity {
     private int deadlineBomb = 2000 / 16;
     private int deadlinebombExploding = 500 / 16;
     public static int sizeBomb = 1;
+    public static int countBomb = 1;
     private boolean isExploded = false;
     public Bomb(double x, double y, Image img) {
         super(x, y, img);
@@ -76,6 +77,7 @@ public class Bomb extends Entity {
                         ((Brick) MapSetup.getStillObjects().get(i)).changeisBreaking();
                 }
             }
+            Bomb.countBomb--;
         }
 
         // hoat anh bom no

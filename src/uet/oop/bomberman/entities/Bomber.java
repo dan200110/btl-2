@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bomber extends Entity {
-    private int speed = 3;
+    private int speed = 2;
     public static int ALLOW_RUN = 0;
     public static int DISALLOW_RUN = 1;
 
