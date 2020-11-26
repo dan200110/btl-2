@@ -11,7 +11,7 @@ public class Wall extends Entity {
         super(x, y, img);
     }
     public int isImpactWallvsBomber(Bomber bomber){
-        Rectangle2D rec1 = new Rectangle2D(x * 32, y * 32, width * 0.9, height*0.9);
+        Rectangle2D rec1 = new Rectangle2D(x * 32, y * 32, width , height);
         Rectangle2D rec2 = new Rectangle2D((double)Math.round(bomber.getX()*10)/10 * 32, (double)Math.round(bomber.getY()*10)/10 * 32, bomber.getWidth() * (double) 4/5, bomber.getHeight());
         if(rec1.intersects(rec2)) return 1;
         return 0;
