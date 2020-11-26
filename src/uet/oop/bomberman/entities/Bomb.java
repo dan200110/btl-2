@@ -34,9 +34,6 @@ public class Bomb extends Entity {
         return 0;
     }
     public int isImpactBombvsMonster(Balloon balloon) {
-        int b = (int) Math.round(Math.abs(this.getY() - balloon.getY()) * 10) / 10;
-        int a = (int) Math.round(Math.abs(this.getX() - balloon.getX()) * 10) / 10;
-        if (a <= 1 || b <= 1)
         {
             Rectangle2D rec1 = new Rectangle2D(x * 32, y * 32, width * 0.9, height * 0.9);
             Rectangle2D rec2 = new Rectangle2D((double) Math.round(balloon.getX() * 10) / 10 * 32, (double) Math.round(balloon.getY() * 10) / 10 * 32, balloon.getWidth() * (double) 4 / 5, balloon.getHeight());

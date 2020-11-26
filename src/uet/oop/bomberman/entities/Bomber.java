@@ -50,17 +50,18 @@ public class Bomber extends Entity {
                         Bomb.sizeBomb++;
                     }
                 }
+                if (stillObject.get(i) instanceof Bomb) {
+                    double b = (double) Math.round(-(stillObject.get(i).getY() - this.getY()) * 10) / 10;
+                    double a = (double) Math.round(-(stillObject.get(i).getX() - this.getX()) * 10) / 10;
+                    if (b <= 0.7) {
+
+                    }
+                    else if (((Bomb) stillObject.get(i)).isImpactBombvsBomber((Bomber) this) == 1) {
+                        y = y + 0.025 * speed;
+                        return;
+                    }
+                }
             }
-
-
-//            for (int i = 0; i < entities.size(); i++) {
-//                if (entities.get(i) instanceof Bomb) {
-//                    if (((Bomb) entities.get(i)).isImpactBombvsBomber((Bomber) this) == 1) {
-//                        y = y + 0.1;
-//                        return;
-//                    }
-//                }
-//            }
 
             img = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, Gameloop.animate, Gameloop.time).getFxImage();
         } else if (key == KeyCode.DOWN) {
@@ -83,6 +84,17 @@ public class Bomber extends Entity {
                     if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
                         MapSetup.getStillObjects().remove(i);
                         Bomb.sizeBomb++;
+                    }
+                }
+                if (stillObject.get(i) instanceof Bomb) {
+                    double b = (double) Math.round((stillObject.get(i).getY() - this.getY()) * 10) / 10;
+                    double a = (double) Math.round(-(stillObject.get(i).getX() - this.getX()) * 10) / 10;
+                    if (b <= 0.7) {
+
+                    }
+                    else if (((Bomb) stillObject.get(i)).isImpactBombvsBomber((Bomber) this) == 1) {
+                        y = y - 0.025 * speed;
+                        return;
                     }
                 }
             }
@@ -109,6 +121,17 @@ public class Bomber extends Entity {
                         Bomb.sizeBomb++;
                     }
                 }
+                if (stillObject.get(i) instanceof Bomb) {
+                    double b = (double) Math.round(-(stillObject.get(i).getY() - this.getY()) * 10) / 10;
+                    double a = (double) Math.round(-(stillObject.get(i).getX() - this.getX()) * 10) / 10;
+                    if (a <= 0.7) {
+
+                    }
+                    else if (((Bomb) stillObject.get(i)).isImpactBombvsBomber((Bomber) this) == 1) {
+                        x = x + 0.025 * speed;
+                        return;
+                    }
+                }
             }
             img = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, Gameloop.animate, Gameloop.time).getFxImage();
         } else if (key == KeyCode.RIGHT) {
@@ -131,6 +154,17 @@ public class Bomber extends Entity {
                     if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
                         MapSetup.getStillObjects().remove(i);
                         Bomb.sizeBomb++;
+                    }
+                }
+                if (stillObject.get(i) instanceof Bomb) {
+                    double b = (double) Math.round(-(stillObject.get(i).getY() - this.getY()) * 10) / 10;
+                    double a = (double) Math.round((stillObject.get(i).getX() - this.getX()) * 10) / 10;
+                    if (a < 0.7) {
+
+                    }
+                    else if (((Bomb) stillObject.get(i)).isImpactBombvsBomber((Bomber) this) == 1) {
+                        x = x - 0.025 * speed;
+                        return;
                     }
                 }
             }
