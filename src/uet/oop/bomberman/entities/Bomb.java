@@ -13,7 +13,7 @@ import java.util.Map;
 public class Bomb extends Entity {
     private double width, height;
     private int deadlineBomb = 2000 / 16;
-    private int deadlinebombExploding = 500 / 16;
+    private int deadlinebombExploding = Gameloop.DeadLineofBreakingThings;
     public static int sizeBomb = 1;
     public static int countBomb = 1;
     private boolean isExploded = false;
@@ -110,29 +110,44 @@ public class Bomb extends Entity {
         boolean stop = false;
         for(int j = 1; j <= sizeBomb; j++) {
             Image img = Sprite.grass.getFxImage();
+            boolean setEnded = false;
             switch (direct) {
                 case 0: // up
                     vertical = -1;
-                    if(j == sizeBomb) img = Sprite.explosion_vertical_top_last.getFxImage();
+                    if(j == sizeBomb) {
+                        img = Sprite.explosion_vertical_top_last.getFxImage();
+                        setEnded = true;
+                    }
                     else img = Sprite.explosion_vertical.getFxImage();
                     break;
                 case 1: // down
                     vertical = 1;
-                    if(j == sizeBomb) img = Sprite.explosion_vertical_down_last.getFxImage();
+                    if(j == sizeBomb) {
+                        img = Sprite.explosion_vertical_down_last.getFxImage();
+                        setEnded = true;
+                    }
                     else img = Sprite.explosion_vertical.getFxImage();
                     break;
                 case 2: // right
                     horizotal = 1;
-                    if(j == sizeBomb) img = Sprite.explosion_horizontal_right_last.getFxImage();
+                    if(j == sizeBomb) {
+                        img = Sprite.explosion_horizontal_right_last.getFxImage();
+                        setEnded = true;
+                    }
                     else img = Sprite.explosion_horizontal.getFxImage();
                     break;
                 case 3: // left
                     horizotal = -1;
-                    if(j == sizeBomb) img = Sprite.explosion_horizontal_left_last.getFxImage();
+                    if(j == sizeBomb) {
+                        img = Sprite.explosion_horizontal_left_last.getFxImage();
+                        setEnded = true;
+                    }
                     else img = Sprite.explosion_horizontal.getFxImage();
                     break;
             }
             Flame flame = new Flame((int) x + horizotal*j, (int) y + vertical*j, img);
+            flame.setDirection(direct);
+            flame.setEnded(setEnded);
             //Rectangle2D flameRect = new Rectangle2D((int)flame.x, (int)flame.y , Sprite.SCALED_SIZE, Sprite.SCALED_SIZE);
             for(int k = 0; k < MapSetup.getStillObjects().size(); k++) {
                 Entity still = MapSetup.getStillObjects().get(k);

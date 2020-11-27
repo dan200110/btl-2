@@ -11,7 +11,8 @@ import uet.oop.bomberman.scene.MapSetup;
 public class Brick extends Entity {
     private double width, height;
     public boolean isBreaking = false;
-    private int deadlinebrickBreaking = 100 / 16;
+    private boolean afterBreakingAnimation = false;
+    private int deadlinebrickBreaking = Gameloop.DeadLineofBreakingThings;
 
     public Brick(double x, double y, Image img) {
         super(x, y, img);
@@ -33,12 +34,19 @@ public class Brick extends Entity {
     }
     @Override
     public void update() {
+        System.out.println(deadlinebrickBreaking);
         if (isBreaking) {
+            if (Sprite.movingSprite(Sprite.brick_exploded, Sprite.brick_exploded1, Sprite.brick_exploded2, deadlinebrickBreaking, Gameloop.time) == Sprite.brick_exploded2) {
+                isBreaking = false;
+                afterBreakingAnimation = true;
+            }
             img = Sprite.movingSprite(Sprite.brick_exploded, Sprite.brick_exploded1, Sprite.brick_exploded2, deadlinebrickBreaking, Gameloop.time).getFxImage();
             deadlinebrickBreaking--;
-            System.out.println(deadlinebrickBreaking);
         }
-        if (deadlinebrickBreaking == 0) {
+        if (afterBreakingAnimation) {
+            deadlinebrickBreaking--;
+        }
+        if (deadlinebrickBreaking <= 0) {
             MapSetup.getStillObjects().remove(this);
         }
     }
