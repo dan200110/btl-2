@@ -34,7 +34,6 @@ public class Brick extends Entity {
     }
     @Override
     public void update() {
-        System.out.println(deadlinebrickBreaking);
         if (isBreaking) {
             if (Sprite.movingSprite(Sprite.brick_exploded, Sprite.brick_exploded1, Sprite.brick_exploded2, deadlinebrickBreaking, Gameloop.time) == Sprite.brick_exploded2) {
                 isBreaking = false;
