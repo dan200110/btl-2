@@ -45,9 +45,13 @@ public class Bomber extends Entity {
                     }
                 }
                 if (stillObject.get(i) instanceof Item){
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="f"){
                         MapSetup.getStillObjects().remove(i);
                         Bomb.sizeBomb++;
+                    }
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
+                        MapSetup.getStillObjects().remove(i);
+                        this.speed++;
                     }
                 }
                 if (stillObject.get(i) instanceof Bomb) {
@@ -81,9 +85,13 @@ public class Bomber extends Entity {
                     }
                 }
                 if (stillObject.get(i) instanceof Item){
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="f"){
                         MapSetup.getStillObjects().remove(i);
                         Bomb.sizeBomb++;
+                    }
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
+                        MapSetup.getStillObjects().remove(i);
+                        this.speed++;
                     }
                 }
                 if (stillObject.get(i) instanceof Bomb) {
@@ -116,9 +124,13 @@ public class Bomber extends Entity {
                     }
                 }
                 if (stillObject.get(i) instanceof Item){
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="f"){
                         MapSetup.getStillObjects().remove(i);
                         Bomb.sizeBomb++;
+                    }
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
+                        MapSetup.getStillObjects().remove(i);
+                        this.speed++;
                     }
                 }
                 if (stillObject.get(i) instanceof Bomb) {
@@ -151,9 +163,13 @@ public class Bomber extends Entity {
                     }
                 }
                 if (stillObject.get(i) instanceof Item){
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)==1){
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="f"){
                         MapSetup.getStillObjects().remove(i);
                         Bomb.sizeBomb++;
+                    }
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
+                        MapSetup.getStillObjects().remove(i);
+                        this.speed++;
                     }
                 }
                 if (stillObject.get(i) instanceof Bomb) {

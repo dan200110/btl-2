@@ -9,13 +9,16 @@ public class Item extends Entity{
         super(x, y, img);
         this.type = type;
     }
-    public int isImpactItemvsBomber(Bomber bomber){
+    public String isImpactItemvsBomber(Bomber bomber){
         if (this.type.equals("f")) {
             if ((int) Math.round(bomber.getX()) == (int) Math.round(this.getX())
-                    && (int) Math.round(bomber.getY()) == (int) Math.round(this.getY())) {return 1; }
-            return 0;
+                    && (int) Math.round(bomber.getY()) == (int) Math.round(this.getY())) {return "f"; }
         }
-        return 1;
+        if (this.type.equals("s")) {
+            if ((int) Math.round(bomber.getX()) == (int) Math.round(this.getX())
+                    && (int) Math.round(bomber.getY()) == (int) Math.round(this.getY())) {return "s"; }
+        }
+        return "*";
     }
     @Override
     public void update() {

@@ -72,6 +72,12 @@ public class MapSetup {
                             stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
                             brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
                             break;
+                        case 's':
+                            stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                            stillObjects.add(new Item(x, y, Sprite.powerup_speed.getFxImage(), "s"));
+                            stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            break;
                         default:
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
                     }

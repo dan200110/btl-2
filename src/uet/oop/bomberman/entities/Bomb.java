@@ -62,18 +62,18 @@ public class Bomb extends Entity {
                 System.out.println("Make fire");
             }
 
-            for (int i = 0; i < MapSetup.getStillObjects().size(); i++) {
-                if (MapSetup.getStillObjects().get(i) instanceof Brick) {
-                    if (Math.abs(((int) MapSetup.getStillObjects().get(i).getX() - (int) this.getX())) <= 1 * sizeBomb
-                            && (int) MapSetup.getStillObjects().get(i).getY() == (int) this.getY())
-                        ((Brick) MapSetup.getStillObjects().get(i)).changeisBreaking();
-                }
-                if (MapSetup.getStillObjects().get(i) instanceof Brick) {
-                    if (Math.abs((int) MapSetup.getStillObjects().get(i).getY() - (int) this.getY()) <= 1 * sizeBomb
-                            && (int) MapSetup.getStillObjects().get(i).getX() == (int) this.getX())
-                        ((Brick) MapSetup.getStillObjects().get(i)).changeisBreaking();
-                }
-            }
+//            for (int i = 0; i < MapSetup.getStillObjects().size(); i++) {
+//                if (MapSetup.getStillObjects().get(i) instanceof Brick) {
+//                    if (Math.abs(((int) MapSetup.getStillObjects().get(i).getX() - (int) this.getX())) <= 1 * sizeBomb
+//                            && (int) MapSetup.getStillObjects().get(i).getY() == (int) this.getY())
+//                        ((Brick) MapSetup.getStillObjects().get(i)).changeisBreaking();
+//                }
+//                if (MapSetup.getStillObjects().get(i) instanceof Brick) {
+//                    if (Math.abs((int) MapSetup.getStillObjects().get(i).getY() - (int) this.getY()) <= 1 * sizeBomb
+//                            && (int) MapSetup.getStillObjects().get(i).getX() == (int) this.getX())
+//                        ((Brick) MapSetup.getStillObjects().get(i)).changeisBreaking();
+//                }
+//            }
             Bomb.countBomb--;
         }
 
@@ -152,8 +152,13 @@ public class Bomb extends Entity {
             for(int k = 0; k < MapSetup.getStillObjects().size(); k++) {
                 Entity still = MapSetup.getStillObjects().get(k);
                 if((int)flame.x == (int)still.getX() && (int)flame.y == (int)still.getY()) {
-                    if (still instanceof Wall || still instanceof Brick) {
+                    if (still instanceof Wall) {
                         stop = true;
+                        break;
+                    }
+                    if (still instanceof Brick){
+                        stop = true;
+                        ((Brick) MapSetup.getStillObjects().get(k)).changeisBreaking();
                         break;
                     }
                     if (still instanceof Bomb) {
