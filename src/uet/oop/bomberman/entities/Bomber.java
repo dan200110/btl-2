@@ -78,7 +78,8 @@ public class Bomber extends Entity {
                             }
                         }
                         System.out.println(count);
-                        if (count == 0) System.out.println("change map");
+                        if (count == 0) {MapSetup.level="res/levels/Level2.txt";
+                            MapSetup.changeMap();}
                     }
                 }
             }
@@ -125,6 +126,19 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
+                if (stillObject.get(i) instanceof Portal){
+                    if (((Portal) stillObject.get(i)).isImpactPortalvsBomber((Bomber) this) == 1) {
+                        int count = 0;
+                        for (int k = 0; k < MapSetup.getEntities().size(); k++){
+                            if (MapSetup.getEntities().get(k) instanceof Balloon){
+                                count++;
+                            }
+                        }
+                        System.out.println(count);
+                        if (count == 0) {MapSetup.level="res/levels/Level2.txt";
+                            MapSetup.changeMap();}
+                    }
+                }
             }
             img = Sprite.movingSprite(Sprite.player_down, Sprite.player_down_1, Sprite.player_down_2, Gameloop.animate, Gameloop.time).getFxImage();
         } else if (key == KeyCode.LEFT) {
@@ -168,6 +182,19 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
+                if (stillObject.get(i) instanceof Portal){
+                    if (((Portal) stillObject.get(i)).isImpactPortalvsBomber((Bomber) this) == 1) {
+                        int count = 0;
+                        for (int k = 0; k < MapSetup.getEntities().size(); k++){
+                            if (MapSetup.getEntities().get(k) instanceof Balloon){
+                                count++;
+                            }
+                        }
+                        System.out.println(count);
+                        if (count == 0) {MapSetup.level="res/levels/Level2.txt";
+                            MapSetup.changeMap();}
+                    }
+                }
             }
             img = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, Gameloop.animate, Gameloop.time).getFxImage();
         } else if (key == KeyCode.RIGHT) {
@@ -209,6 +236,19 @@ public class Bomber extends Entity {
                     else if (((Bomb) stillObject.get(i)).isImpactBombvsBomber((Bomber) this) == 1) {
                         x = x - 0.025 * speed;
                         return;
+                    }
+                }
+                if (stillObject.get(i) instanceof Portal){
+                    if (((Portal) stillObject.get(i)).isImpactPortalvsBomber((Bomber) this) == 1) {
+                        int count = 0;
+                        for (int k = 0; k < MapSetup.getEntities().size(); k++){
+                            if (MapSetup.getEntities().get(k) instanceof Balloon){
+                                count++;
+                            }
+                        }
+                        System.out.println(count);
+                        if (count == 0) {MapSetup.level="res/levels/Level2.txt";
+                            MapSetup.changeMap();}
                     }
                 }
             }
