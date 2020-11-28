@@ -30,7 +30,7 @@ public class Bomber extends Entity {
                 return;
             }
             y = y - 0.025 * speed;
-            System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
+            //System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
                     if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Bomber)this) == 1) {
@@ -74,7 +74,7 @@ public class Bomber extends Entity {
             img = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, Gameloop.animate, Gameloop.time).getFxImage();
         } else if (key == KeyCode.DOWN) {
             y = y + 0.025 * speed;
-            System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
+            //System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
                     if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Bomber)this) == 1) {
@@ -117,7 +117,7 @@ public class Bomber extends Entity {
             img = Sprite.movingSprite(Sprite.player_down, Sprite.player_down_1, Sprite.player_down_2, Gameloop.animate, Gameloop.time).getFxImage();
         } else if (key == KeyCode.LEFT) {
             x = x - 0.025 * speed;
-            System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
+            //System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
                     if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Bomber)this) == 1) {
@@ -160,7 +160,7 @@ public class Bomber extends Entity {
             img = Sprite.movingSprite(Sprite.player_left, Sprite.player_left_1, Sprite.player_left_2, Gameloop.animate, Gameloop.time).getFxImage();
         } else if (key == KeyCode.RIGHT) {
             x = x + 0.025 * speed;
-            System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
+            //System.out.println("Bomber: x: " + (double) Math.round(x * 10) / 10 + " , y: " + (double) Math.round(y * 10) / 10);
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
                     if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Bomber)this) == 1) {

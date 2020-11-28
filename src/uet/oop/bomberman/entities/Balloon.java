@@ -28,6 +28,7 @@ public class Balloon extends Entity {
             }
             y = y - speedBallon;
 
+
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
                     if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Balloon) this) == 1) {

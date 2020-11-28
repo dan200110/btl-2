@@ -48,7 +48,17 @@ public class Bomb extends Entity {
         // hoat anh bom
         img = Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, deadlineBomb, Gameloop.time).getFxImage();
 
-        if (deadlineBomb == 0) {
+        // hoat anh bom no
+        if (isExploded) {
+            img = Sprite.movingSprite(Sprite.bomb_exploded, Sprite.bomb_exploded1, Sprite.bomb_exploded2, deadlinebombExploding, Gameloop.time).getFxImage();
+            deadlinebombExploding--;
+            //System.out.println( " Bom no o giua: " + deadlinebombExploding);
+        }
+        if (deadlinebombExploding <= 0) {
+            MapSetup.getStillObjects().remove(this);
+        }
+
+        if (deadlineBomb <= 0 && isExploded == false) {
             isExploded = true;
             // tao lua
             /* Y tuong:
@@ -59,7 +69,6 @@ public class Bomb extends Entity {
             */
             for(int i = 0; i < 4; i++) {
                 makeFire(i);
-                System.out.println("Make fire");
             }
 
 //            for (int i = 0; i < MapSetup.getStillObjects().size(); i++) {
@@ -74,17 +83,8 @@ public class Bomb extends Entity {
 //                        ((Brick) MapSetup.getStillObjects().get(i)).changeisBreaking();
 //                }
 //            }
-            Bomb.countBomb--;
-        }
-
-        // hoat anh bom no
-        if (isExploded) {
-            img = Sprite.movingSprite(Sprite.bomb_exploded, Sprite.bomb_exploded1, Sprite.bomb_exploded2, deadlinebombExploding, Gameloop.time).getFxImage();
-            deadlinebombExploding--;
-            //System.out.println(deadlinebombExploding);
-        }
-        if (deadlinebombExploding == 0) {
-            MapSetup.getStillObjects().remove(this);
+            if (Bomb.countBomb > 0) Bomb.countBomb--;
+            System.out.println("bombcount: " + Bomb.countBomb);
         }
     }
 
@@ -161,11 +161,11 @@ public class Bomb extends Entity {
                         ((Brick) MapSetup.getStillObjects().get(k)).changeisBreaking();
                         break;
                     }
-//                    if (still instanceof Bomb) {
-//                        ((Bomb) still).deadlineBomb = 1;
-//                        stop = true;
-//                        break;
-//                    }
+                    if (still instanceof Bomb) {
+                        ((Bomb) still).deadlineBomb = 0;
+                        stop = true;
+                        break;
+                    }
                     }
 //                //if(flameRect.intersects(new Rectangle2D(still.x, still.y, Sprite.SCALED_SIZE, Sprite.SCALED_SIZE))) {
 //            }

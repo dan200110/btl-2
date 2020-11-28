@@ -40,6 +40,7 @@ public class Flame extends Entity{
                     break;
             }
             timeleft--;
+            //System.out.println("Flame ton tai: " + timeleft);
         }
         if (timeleft == 0) {
             MapSetup.getStillObjects().remove(this);
