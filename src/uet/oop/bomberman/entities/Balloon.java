@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.BombermanGame;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Balloon extends Entity {
-    private static int count = 10;
+    //private static int count = 10;
     public double speedBallon = 0.02;
     public Balloon(int x, int y, Image img) {
         super(x, y, img);
@@ -160,5 +161,17 @@ public class Balloon extends Entity {
                 move(a, MapSetup.getStillObjects(), MapSetup.getEntities());
             } else a = random.nextInt(4) + 1;
         }
+        for(int i = 0; i < MapSetup.getStillObjects().size(); i++) {
+            if(MapSetup.getStillObjects().get(i) instanceof Flame) {
+                Flame flame = (Flame) MapSetup.getStillObjects().get(i);
+                if(Math.round(flame.x) == Math.round(this.x) && Math.round(flame.y) == Math.round(this.y)) {
+                    destroy();
+                }
+            }
+        }
+    }
+
+    public void destroy() {
+        MapSetup.getEntities().remove(this);
     }
 }
