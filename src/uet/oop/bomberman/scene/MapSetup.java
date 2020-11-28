@@ -4,15 +4,14 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import uet.oop.bomberman.Enemy.Balloon;
+import uet.oop.bomberman.Enemy.Oneal;
 import uet.oop.bomberman.controls.KeyController;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Sprite;
 
-import java.awt.*;
-import java.awt.image.BufferStrategy;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -2,13 +2,10 @@ package uet.oop.bomberman.entities;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import uet.oop.bomberman.Enemy.Balloon;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class Bomb extends Entity {
     private double width, height;

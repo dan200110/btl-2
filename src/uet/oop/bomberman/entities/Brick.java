@@ -2,8 +2,8 @@ package uet.oop.bomberman.entities;
 
 import javafx.scene.image.Image;
 
-import java.awt.*;
 import javafx.geometry.Rectangle2D;
+import uet.oop.bomberman.Enemy.Balloon;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;

@@ -3,6 +3,8 @@ package uet.oop.bomberman.entities;
 import javafx.scene.image.Image;
 
 import javafx.scene.input.*;
+import uet.oop.bomberman.Enemy.Balloon;
+import uet.oop.bomberman.Enemy.Enemy;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
@@ -256,9 +258,44 @@ public class Bomber extends Entity {
         }
     }
 
+    public void checkDamage() {
+        for(int i = 0; i < MapSetup.getEntities().size(); i++) {
+            if(MapSetup.getEntities().get(i) instanceof Enemy) {
+                Enemy enemy = (Enemy) MapSetup.getEntities().get(i);
+                if(Math.round(enemy.getX()) == Math.round(x) && Math.round(enemy.getY()) == Math.round(y)) {
+                    this.restart();
+                    break;
+                 }
+            }
+        }
+        for(int i = 0; i < MapSetup.getStillObjects().size(); i++) {
+            if(MapSetup.getStillObjects().get(i) instanceof Flame) {
+                Flame flame = (Flame) MapSetup.getStillObjects().get(i);
+                if(Math.round(flame.getX()) == Math.round(x) && Math.round(flame.getY()) == Math.round(y)) {
+                    this.restart();
+                    return;
+                }
+            }
+            if(MapSetup.getStillObjects().get(i) instanceof Bomb) {
+                Bomb bomb = (Bomb) MapSetup.getStillObjects().get(i);
+                if(Math.round(bomb.getX()) == Math.round(x) && Math.round(bomb.getY()) == Math.round(y)) {
+                    if (bomb.deadlineBomb <0 ) {
+                        this.restart();
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    public void restart() {
+        this.x = 1;
+        this.y = 1;
+    }
 
     @Override
     public void update() {
+        checkDamage();
     }
 
 }
