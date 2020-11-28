@@ -21,6 +21,7 @@ public class Balloon extends Entity {
         tao 1 hg ngau nhien
 
      */
+    public static int countBallon = 3;
     private Random random = new Random();
 
     public boolean move(int orient, List<Entity> stillObject, List<Entity> entities) {
@@ -180,5 +181,6 @@ public class Balloon extends Entity {
 
     public void destroy() {
         MapSetup.getEntities().remove(this);
+        countBallon--;
     }
 }

@@ -69,6 +69,18 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
+                if (stillObject.get(i) instanceof Portal){
+                    if (((Portal) stillObject.get(i)).isImpactPortalvsBomber((Bomber) this) == 1) {
+                        int count = 0;
+                        for (int k = 0; k < MapSetup.getEntities().size(); k++){
+                            if (MapSetup.getEntities().get(k) instanceof Balloon){
+                                count++;
+                            }
+                        }
+                        System.out.println(count);
+                        if (count == 0) System.out.println("change map");
+                    }
+                }
             }
 
             img = Sprite.movingSprite(Sprite.player_up, Sprite.player_up_1, Sprite.player_up_2, Gameloop.animate, Gameloop.time).getFxImage();
