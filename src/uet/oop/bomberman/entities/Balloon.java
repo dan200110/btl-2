@@ -7,6 +7,7 @@ import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Balloon extends Entity {
@@ -166,6 +167,12 @@ public class Balloon extends Entity {
                 Flame flame = (Flame) MapSetup.getStillObjects().get(i);
                 if(Math.round(flame.x) == Math.round(this.x) && Math.round(flame.y) == Math.round(this.y)) {
                     destroy();
+                }
+            }
+            if(MapSetup.getStillObjects().get(i) instanceof Bomb) {
+                Bomb bomb = (Bomb) MapSetup.getStillObjects().get(i);
+                if(Math.round(bomb.x) == Math.round(this.x) && Math.round(bomb.y) == Math.round(this.y)) {
+                    if(bomb.deadlineBomb < 0) destroy();
                 }
             }
         }

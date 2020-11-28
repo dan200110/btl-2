@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class Bomb extends Entity {
     private double width, height;
-    private int deadlineBomb = 2000 / 16;
+    public int deadlineBomb = 2000 / 16;
     private int deadlinebombExploding = Gameloop.DeadLineofBreakingThings;
     public static int sizeBomb = 1;
     public static int countBomb = 1;
