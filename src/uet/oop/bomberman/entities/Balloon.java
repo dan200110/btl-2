@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class Balloon extends Entity {
     private static int count = 10;
-
+    public double speedBallon = 0.02;
     public Balloon(int x, int y, Image img) {
         super(x, y, img);
     }
@@ -26,18 +26,18 @@ public class Balloon extends Entity {
             if (y <= 0) {
                 return false;
             }
-            y = y - 0.025;
+            y = y - speedBallon;
 
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
                     if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Balloon) this) == 1) {
-                        y = y + 0.025;
+                        y = y + speedBallon;
                         return false;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
                     if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Balloon) this) == 1) {
-                        y = y + 0.025;
+                        y = y + speedBallon;
                         return false;
                     }
                 }
@@ -48,7 +48,7 @@ public class Balloon extends Entity {
 
                     }
                     else if (((Bomb) stillObject.get(i)).isImpactBombvsMonster((Balloon) this) == 1) {
-                        y = y + 0.025;
+                        y = y + speedBallon;
                         return false;
                     }
                 }
@@ -57,18 +57,18 @@ public class Balloon extends Entity {
             img = Sprite.movingSprite(Sprite.balloom_left1, Sprite.balloom_left2, Sprite.balloom_left3, Gameloop.animate, Gameloop.time).getFxImage();
             return true;
         } else if (orient == 2) {
-            y = y + 0.025;
+            y = y + speedBallon;
 
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
                     if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Balloon) this) == 1) {
-                        y = y - 0.025;
+                        y = y - speedBallon;
                         return false;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
                     if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Balloon) this) == 1) {
-                        y = y - 0.025;
+                        y = y - speedBallon;
                         return false;
                     }
                 }
@@ -79,7 +79,7 @@ public class Balloon extends Entity {
 
                     }
                     else if (((Bomb) stillObject.get(i)).isImpactBombvsMonster((Balloon) this) == 1) {
-                        y = y - 0.025;
+                        y = y - speedBallon;
                         return false;
                     }
                 }
@@ -87,18 +87,18 @@ public class Balloon extends Entity {
             img = Sprite.movingSprite(Sprite.balloom_right1, Sprite.balloom_right2, Sprite.balloom_right3, Gameloop.animate, Gameloop.time).getFxImage();
             return true;
         } else if (orient == 3) {
-            x = x - 0.025;
+            x = x - speedBallon;
 
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
                     if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Balloon) this) == 1) {
-                        x = x + 0.025;
+                        x = x + speedBallon;
                         return false;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
                     if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Balloon) this) == 1) {
-                        x = x + 0.025;
+                        x = x + speedBallon;
                         return false;
                     }
                 }
@@ -109,7 +109,7 @@ public class Balloon extends Entity {
 
                     }
                     else if (((Bomb) stillObject.get(i)).isImpactBombvsMonster((Balloon) this) == 1) {
-                        x = x + 0.025;
+                        x = x + speedBallon;
                         return false;
                     }
                 }
@@ -117,18 +117,18 @@ public class Balloon extends Entity {
             img = Sprite.movingSprite(Sprite.balloom_left1, Sprite.balloom_left2, Sprite.balloom_left3, Gameloop.animate, Gameloop.time).getFxImage();
             return true;
         } else if (orient == 4) {
-            x = x + 0.025;
+            x = x + speedBallon;
 
             for (int i = 0; i < stillObject.size(); i++) {
                 if (stillObject.get(i) instanceof Wall) {
                     if (((Wall) stillObject.get(i)).isImpactWallvsBomber((Balloon) this) == 1) {
-                        x = x - 0.025;
+                        x = x - speedBallon;
                         return false;
                     }
                 }
                 if (stillObject.get(i) instanceof Brick) {
                     if (((Brick) stillObject.get(i)).isImpactBrickvsBomber((Balloon) this) == 1) {
-                        x = x - 0.025;
+                        x = x - speedBallon;
                         return false;
                     }
                 }
@@ -139,7 +139,7 @@ public class Balloon extends Entity {
 
                     }
                     else if (((Bomb) stillObject.get(i)).isImpactBombvsMonster((Balloon) this) == 1) {
-                        x = x - 0.025;
+                        x = x - speedBallon;
                         return false;
                     }
                 }

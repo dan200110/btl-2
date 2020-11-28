@@ -156,18 +156,44 @@ public class Bomb extends Entity {
                         stop = true;
                         break;
                     }
-                    if (still instanceof Brick){
+                    if (still instanceof Brick) {
                         stop = true;
                         ((Brick) MapSetup.getStillObjects().get(k)).changeisBreaking();
                         break;
                     }
-                    if (still instanceof Bomb) {
-                        ((Bomb) still).deadlineBomb = 1;
-                        stop = true;
-                        break;
+//                    if (still instanceof Bomb) {
+//                        ((Bomb) still).deadlineBomb = 1;
+//                        stop = true;
+//                        break;
+//                    }
                     }
-                }
-                //if(flameRect.intersects(new Rectangle2D(still.x, still.y, Sprite.SCALED_SIZE, Sprite.SCALED_SIZE))) {
+//                //if(flameRect.intersects(new Rectangle2D(still.x, still.y, Sprite.SCALED_SIZE, Sprite.SCALED_SIZE))) {
+//            }
+                    for (int i = 0; i < MapSetup.getEntities().size(); i++) {
+                        Entity entity = MapSetup.getEntities().get(i);
+                        if ((Math.abs((int) flame.x - ((int) entity.getX())) < (int) sizeBomb
+                                && Math.abs((int) flame.y) == Math.abs((int) entity.getY()))
+                                || (Math.abs((int) flame.y - ((int) entity.getY())) <= sizeBomb
+                                && Math.abs((int) flame.x) == Math.abs((int) entity.getX()))) {
+                            if ((int) flame.x == (int) entity.getX() && (int) flame.y == (int) entity.getY()) {
+                                if (entity instanceof Oneal) {
+                                    MapSetup.getEntities().remove(i);
+                                }
+                            }
+                            if (Math.abs((int) flame.y - ((int) entity.getY())) <= sizeBomb
+                                    && Math.abs((int) flame.x) == Math.abs((int) entity.getX())) {
+
+                                if (entity instanceof Balloon) {
+                                    MapSetup.getEntities().remove(i);
+                                }
+                                if (entity instanceof Oneal) {
+                                    MapSetup.getEntities().remove(i);
+                                }
+
+                            }
+                        }
+                    }
+
             }
             if(!stop) {
                 MapSetup.getStillObjects().add(flame);

@@ -53,6 +53,10 @@ public class Bomber extends Entity {
                         MapSetup.getStillObjects().remove(i);
                         this.speed++;
                     }
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
+                        MapSetup.getStillObjects().remove(i);
+                        Bomb.countBomb--;
+                    }
                 }
                 if (stillObject.get(i) instanceof Bomb) {
                     double b = (double) Math.round(-(stillObject.get(i).getY() - this.getY()) * 10) / 10;
@@ -93,6 +97,10 @@ public class Bomber extends Entity {
                         MapSetup.getStillObjects().remove(i);
                         this.speed++;
                     }
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
+                        MapSetup.getStillObjects().remove(i);
+                        Bomb.countBomb--;
+                    }
                 }
                 if (stillObject.get(i) instanceof Bomb) {
                     double b = (double) Math.round((stillObject.get(i).getY() - this.getY()) * 10) / 10;
@@ -132,6 +140,10 @@ public class Bomber extends Entity {
                         MapSetup.getStillObjects().remove(i);
                         this.speed++;
                     }
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
+                        MapSetup.getStillObjects().remove(i);
+                        Bomb.countBomb--;
+                    }
                 }
                 if (stillObject.get(i) instanceof Bomb) {
                     double b = (double) Math.round(-(stillObject.get(i).getY() - this.getY()) * 10) / 10;
@@ -170,6 +182,10 @@ public class Bomber extends Entity {
                     if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
                         MapSetup.getStillObjects().remove(i);
                         this.speed++;
+                    }
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
+                        MapSetup.getStillObjects().remove(i);
+                        Bomb.countBomb--;
                     }
                 }
                 if (stillObject.get(i) instanceof Bomb) {

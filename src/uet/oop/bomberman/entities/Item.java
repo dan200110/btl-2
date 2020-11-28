@@ -18,6 +18,10 @@ public class Item extends Entity{
             if ((int) Math.round(bomber.getX()) == (int) Math.round(this.getX())
                     && (int) Math.round(bomber.getY()) == (int) Math.round(this.getY())) {return "s"; }
         }
+        if (this.type.equals("b")) {
+            if ((int) Math.round(bomber.getX()) == (int) Math.round(this.getX())
+                    && (int) Math.round(bomber.getY()) == (int) Math.round(this.getY())) {return "b"; }
+        }
         return "*";
     }
     @Override
