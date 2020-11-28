@@ -6,7 +6,7 @@ import uet.oop.bomberman.controls.PlayerController;
 import uet.oop.bomberman.entities.Entity;
 
 public class Gameloop {
-    public static int time = 10;
+    public static int time = 19;
     public static int DeadLineofBreakingThings = 400 / 16;
     public static int animate;
     private static void update() {
