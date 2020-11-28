@@ -29,10 +29,10 @@ public class MapSetup {
     private static List<Balloon> balloonList = new ArrayList<>();
     public static int WIDTH = 31 ;
     public static int HEIGHT = 13;
-
+    public static String level = "res/levels/Level1.txt";
     public static void createMap() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("res/levels/Level1.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(level));
             String a = reader.readLine();
             String temp[] = a.split(" ");
             int level = Integer.valueOf(temp[0]);
@@ -95,6 +95,73 @@ public class MapSetup {
             bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
             entities.add(bomberman);
         }
+    public static void changeMap() {
+        stillObjects.clear();
+        entities.clear();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(level));
+            String a = reader.readLine();
+            String temp[] = a.split(" ");
+            int level = Integer.valueOf(temp[0]);
+            HEIGHT = Integer.valueOf(temp[1]);
+            WIDTH = Integer.valueOf(temp[2])  ;
+            for (int  y = 0; y < HEIGHT; y++) {
+                String s = reader.readLine();
+                for (int x = 0; x < WIDTH; x++) {
+                    switch (s.charAt( (int) x)) {
+                        case '#':
+                            stillObjects.add(new Wall(x, y, Sprite.wall.getFxImage()));
+                            wallArrayList.add(new Wall(x, y, Sprite.wall.getFxImage()));
+                            break;
+                        case '*':
+                            stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                            stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            break;
+                        case '1':
+                            stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                            entities.add(new Balloon(x, y, Sprite.balloom_left1.getFxImage()));
+                            balloonList.add(new Balloon(x, y, Sprite.balloom_left1.getFxImage()));
+                            break;
+                        case '2':
+                            stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                            entities.add(new Oneal(x, y, Sprite.oneal_left1.getFxImage()));
+                            break;
+                        case 'x':
+                            stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                            stillObjects.add(new Portal(x, y, Sprite.portal.getFxImage()));
+                            stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            break;
+                        case 'f':
+                            stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                            stillObjects.add(new Item(x, y, Sprite.powerup_flames.getFxImage(), "f"));
+                            stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            break;
+                        case 's':
+                            stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                            stillObjects.add(new Item(x, y, Sprite.powerup_speed.getFxImage(), "s"));
+                            stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            break;
+                        case 'b':
+                            stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                            stillObjects.add(new Item(x, y, Sprite.powerup_bombs.getFxImage(), "b"));
+                            stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            break;
+                        default:
+                            stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Loi doc file");
+        }
+        bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        entities.add(bomberman);
+    }
     public static void init() {
         canvas = new Canvas(Sprite.SCALED_SIZE * WIDTH, Sprite.SCALED_SIZE * HEIGHT);
         gc = canvas.getGraphicsContext2D();
