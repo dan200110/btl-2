@@ -15,12 +15,8 @@ public class BombermanGame extends Application {
     public void start(Stage stage) {
         URL url = BombermanGame.class.getResource("/sound/Ending.mp3");
         System.out.println(String.valueOf(url));
-        try {
-            Media media = new Media(String.valueOf(url));
-            new MediaPlayer(media).play();
-        } catch (Exception e) {
-            System.out.println("test");
-        }
+        Media media = new Media(String.valueOf(url));
+        new MediaPlayer(media).play();
         System.out.println();
         MapSetup.init();
 
