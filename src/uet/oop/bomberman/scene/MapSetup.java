@@ -4,8 +4,11 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Cell;
 import uet.oop.bomberman.Enemy.Balloon;
 import uet.oop.bomberman.Enemy.Oneal;
+import uet.oop.bomberman.astar.AStarCell;
+import uet.oop.bomberman.astar.AStarGrid;
 import uet.oop.bomberman.controls.KeyController;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Sprite;
@@ -29,6 +32,9 @@ public class MapSetup {
     public static int WIDTH = 31 ;
     public static int HEIGHT = 13;
     public static String level = "res/levels/Level1.txt";
+
+    //private static AStarGrid = new AStarGrid
+
     public static void createMap() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(level));

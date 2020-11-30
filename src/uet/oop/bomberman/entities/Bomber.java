@@ -1,5 +1,6 @@
 package uet.oop.bomberman.entities;
 
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 
 import javafx.scene.input.*;
@@ -19,6 +20,7 @@ public class Bomber extends Entity {
     public static int ALLOW_RUN = 0;
     public static int DISALLOW_RUN = 1;
     private boolean isDead = false;
+    private int lives = 3;
 
     public Bomber(double x, double y, Image img) {
         super(x, y, img);
@@ -302,11 +304,18 @@ public class Bomber extends Entity {
             deadtime--;
             img = Sprite.movingSprite(Sprite.player_dead1, Sprite.player_dead2, Sprite.player_dead3, deadtime, Gameloop.time).getFxImage();
             if (deadtime <= 0) {
-                this.x = 1;
-                this.y = 1;
-                isDead = false;
-                deadtime = Gameloop.DeadLineofBreakingThings + 3;
-                img = Sprite.player_right.getFxImage();
+                lives--;
+                if (lives > 0) {
+                    this.x = 1;
+                    this.y = 1;
+                    isDead = false;
+                    deadtime = Gameloop.DeadLineofBreakingThings + 3;
+                    img = Sprite.player_right.getFxImage();
+                } else if (deadtime < -5) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+
             }
         }
     }
