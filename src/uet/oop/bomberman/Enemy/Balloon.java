@@ -14,6 +14,8 @@ import java.util.Random;
 public class Balloon extends Enemy {
     //private static int count = 10;
     public double speedBallon = 0.02;
+    private int deadtime = Gameloop.DeadLineofBreakingThings*2;
+    private boolean isDead = false;
     public Balloon(int x, int y, Image img) {
         super(x, y, img);
     }
@@ -159,29 +161,39 @@ public class Balloon extends Enemy {
 
     @Override
     public void update() {
-        {
+        if (!isDead) {
             if (this.move(a, MapSetup.getStillObjects(), MapSetup.getEntities()) == true) {
                 move(a, MapSetup.getStillObjects(), MapSetup.getEntities());
             } else a = random.nextInt(4) + 1;
-        }
-        for(int i = 0; i < MapSetup.getStillObjects().size(); i++) {
-            if(MapSetup.getStillObjects().get(i) instanceof Flame) {
-                Flame flame = (Flame) MapSetup.getStillObjects().get(i);
-                if(Math.round(flame.getX()) == Math.round(this.x) && Math.round(flame.getY()) == Math.round(this.y)) {
-                    destroy();
+            for (int i = 0; i < MapSetup.getStillObjects().size(); i++) {
+                if (MapSetup.getStillObjects().get(i) instanceof Flame) {
+                    Flame flame = (Flame) MapSetup.getStillObjects().get(i);
+                    if (Math.round(flame.getX()) == Math.round(this.x) && Math.round(flame.getY()) == Math.round(this.y)) {
+                        destroy();
+                    }
+                }
+                if (MapSetup.getStillObjects().get(i) instanceof Bomb) {
+                    Bomb bomb = (Bomb) MapSetup.getStillObjects().get(i);
+                    if (Math.round(bomb.getX()) == Math.round(this.x) && Math.round(bomb.getY()) == Math.round(this.y)) {
+                        if (bomb.deadlineBomb < 0) destroy();
+                    }
                 }
             }
-            if(MapSetup.getStillObjects().get(i) instanceof Bomb) {
-                Bomb bomb = (Bomb) MapSetup.getStillObjects().get(i);
-                if(Math.round(bomb.getX()) == Math.round(this.x) && Math.round(bomb.getY()) == Math.round(this.y)) {
-                    if(bomb.deadlineBomb < 0) destroy();
-                }
+        } else {
+            deadtime--;
+            if (deadtime > Gameloop.DeadLineofBreakingThings) {
+                img = Sprite.balloom_dead.getFxImage();
+            } else {
+                img = Sprite.movingSprite(Sprite.mob_dead1, Sprite.mob_dead2, Sprite.mob_dead3, deadtime, Gameloop.time).getFxImage();
+            }
+            if (deadtime <= 0) {
+                MapSetup.getEntities().remove(this);
             }
         }
     }
 
     public void destroy() {
-        MapSetup.getEntities().remove(this);
+        isDead = true;
         countBallon--;
     }
 }

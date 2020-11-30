@@ -15,8 +15,10 @@ import java.util.List;
 
 public class Bomber extends Entity {
     private int speed = 2;
+    private int deadtime = Gameloop.DeadLineofBreakingThings + 3;
     public static int ALLOW_RUN = 0;
     public static int DISALLOW_RUN = 1;
+    private boolean isDead = false;
 
     public Bomber(double x, double y, Image img) {
         super(x, y, img);
@@ -290,13 +292,23 @@ public class Bomber extends Entity {
     }
 
     public void restart() {
-        this.x = 1;
-        this.y = 1;
+        isDead = true;
     }
 
     @Override
     public void update() {
         checkDamage();
+        if (isDead) {
+            deadtime--;
+            img = Sprite.movingSprite(Sprite.player_dead1, Sprite.player_dead2, Sprite.player_dead3, deadtime, Gameloop.time).getFxImage();
+            if (deadtime <= 0) {
+                this.x = 1;
+                this.y = 1;
+                isDead = false;
+                deadtime = Gameloop.DeadLineofBreakingThings + 3;
+                img = Sprite.player_right.getFxImage();
+            }
+        }
     }
 
 }
