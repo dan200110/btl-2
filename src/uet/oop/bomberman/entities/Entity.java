@@ -10,7 +10,7 @@ public abstract class Entity {
     protected double x;
     protected double y;
     protected double width, height;
-    protected int orient;
+    protected int orient ;
     protected Image img;
     public static final int LEFT = 1;
     public static final int RIGHT = 2;
