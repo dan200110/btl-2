@@ -8,7 +8,6 @@ public class Enemy extends Entity {
         super(x, y, img);
     }
 
-    
     @Override
     public void update() {
 

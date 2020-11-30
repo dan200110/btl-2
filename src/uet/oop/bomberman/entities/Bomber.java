@@ -56,16 +56,16 @@ public class Bomber extends Entity {
                         MapSetup.getStillObjects().remove(i);
                         Bomb.sizeBomb++;
                     }
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
+                    else if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
                         MapSetup.getStillObjects().remove(i);
                         this.speed++;
                     }
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
+                    else if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
                         MapSetup.getStillObjects().remove(i);
                         Bomb.countBomb--;
                     }
                 }
-                if (stillObject.get(i) instanceof Bomb) {
+                else if (stillObject.get(i) instanceof Bomb) {
                     double b = (double) Math.round(-(stillObject.get(i).getY() - this.getY()) * 10) / 10;
                     double a = (double) Math.round(-(stillObject.get(i).getX() - this.getX()) * 10) / 10;
                     if (b <= 0.7) {
@@ -76,7 +76,7 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
-                if (stillObject.get(i) instanceof Portal){
+                else if (stillObject.get(i) instanceof Portal){
                     if (((Portal) stillObject.get(i)).isImpactPortalvsBomber((Bomber) this) == 1) {
                         int count = 0;
                         for (int k = 0; k < MapSetup.getEntities().size(); k++){
@@ -109,20 +109,20 @@ public class Bomber extends Entity {
                     }
                 }
                 if (stillObject.get(i) instanceof Item){
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="f"){
-                        MapSetup.getStillObjects().remove(i);
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this).equals("f")){
+                        MapSetup.getStillObjects().remove(stillObject.get(i));
                         Bomb.sizeBomb++;
                     }
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
-                        MapSetup.getStillObjects().remove(i);
-                        this.speed++;
+                    else if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this).equals("s")){
+                        MapSetup.getStillObjects().remove(stillObject.get(i));
+                        speed++;
                     }
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
-                        MapSetup.getStillObjects().remove(i);
+                    else if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this).equals("b")){
+                        MapSetup.getStillObjects().remove(stillObject.get(i));
                         Bomb.countBomb--;
                     }
                 }
-                if (stillObject.get(i) instanceof Bomb) {
+                else if (stillObject.get(i) instanceof Bomb) {
                     double b = (double) Math.round((stillObject.get(i).getY() - this.getY()) * 10) / 10;
                     double a = (double) Math.round(-(stillObject.get(i).getX() - this.getX()) * 10) / 10;
                     if (b <= 0.7) {
@@ -133,7 +133,7 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
-                if (stillObject.get(i) instanceof Portal){
+                else if (stillObject.get(i) instanceof Portal){
                     if (((Portal) stillObject.get(i)).isImpactPortalvsBomber((Bomber) this) == 1) {
                         int count = 0;
                         for (int k = 0; k < MapSetup.getEntities().size(); k++){
@@ -165,20 +165,20 @@ public class Bomber extends Entity {
                     }
                 }
                 if (stillObject.get(i) instanceof Item){
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="f"){
-                        MapSetup.getStillObjects().remove(i);
+                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this).equals("f")){
+                        MapSetup.getStillObjects().remove(stillObject.get(i));
                         Bomb.sizeBomb++;
                     }
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
-                        MapSetup.getStillObjects().remove(i);
-                        this.speed++;
+                    else if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this).equals("s")){
+                        MapSetup.getStillObjects().remove(stillObject.get(i));
+                        speed++;
                     }
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
-                        MapSetup.getStillObjects().remove(i);
+                    else if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this).equals("b")){
+                        MapSetup.getStillObjects().remove(stillObject.get(i));
                         Bomb.countBomb--;
                     }
                 }
-                if (stillObject.get(i) instanceof Bomb) {
+                else if (stillObject.get(i) instanceof Bomb) {
                     double b = (double) Math.round(-(stillObject.get(i).getY() - this.getY()) * 10) / 10;
                     double a = (double) Math.round(-(stillObject.get(i).getX() - this.getX()) * 10) / 10;
                     if (a <= 0.7) {
@@ -189,7 +189,7 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
-                if (stillObject.get(i) instanceof Portal){
+                else if (stillObject.get(i) instanceof Portal){
                     if (((Portal) stillObject.get(i)).isImpactPortalvsBomber((Bomber) this) == 1) {
                         int count = 0;
                         for (int k = 0; k < MapSetup.getEntities().size(); k++){
@@ -225,16 +225,16 @@ public class Bomber extends Entity {
                         MapSetup.getStillObjects().remove(i);
                         Bomb.sizeBomb++;
                     }
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
+                    else if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="s"){
                         MapSetup.getStillObjects().remove(i);
                         this.speed++;
                     }
-                    if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
+                    else if (((Item) stillObject.get(i)).isImpactItemvsBomber((Bomber)this)=="b"){
                         MapSetup.getStillObjects().remove(i);
                         Bomb.countBomb--;
                     }
                 }
-                if (stillObject.get(i) instanceof Bomb) {
+                else if (stillObject.get(i) instanceof Bomb) {
                     double b = (double) Math.round(-(stillObject.get(i).getY() - this.getY()) * 10) / 10;
                     double a = (double) Math.round((stillObject.get(i).getX() - this.getX()) * 10) / 10;
                     if (a < 0.7) {
@@ -245,7 +245,7 @@ public class Bomber extends Entity {
                         return;
                     }
                 }
-                if (stillObject.get(i) instanceof Portal){
+                else if (stillObject.get(i) instanceof Portal){
                     if (((Portal) stillObject.get(i)).isImpactPortalvsBomber((Bomber) this) == 1) {
                         int count = 0;
                         for (int k = 0; k < MapSetup.getEntities().size(); k++){
