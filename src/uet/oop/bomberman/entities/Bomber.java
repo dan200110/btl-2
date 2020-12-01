@@ -341,5 +341,10 @@ public class Bomber extends Entity {
             }
         }
     }
-
+    public int getXSpecial() {
+        return (int) Math.round(x);
+    }
+    public int getYSpecial() {
+        return (int) Math.round(y);
+    }
 }

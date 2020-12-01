@@ -37,7 +37,7 @@ public class MapSetup {
     public static int map = 1;
     public static String level = "res/levels/Level1.txt";
 
-    private static AStarGrid grid = new AStarGrid(WIDTH, HEIGHT);
+    public static AStarGrid grid = new AStarGrid(WIDTH, HEIGHT);
 
     public static void createMap() {
         try {
@@ -54,47 +54,56 @@ public class MapSetup {
                         case '#':
                             stillObjects.add(new Wall(x, y, Sprite.wall.getFxImage()));
                             wallArrayList.add(new Wall(x, y, Sprite.wall.getFxImage()));
+                            grid.setCell(x, y, true);
                             break;
                         case '*':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
                             stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
                             brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            grid.setCell(x, y, true);
                             break;
                         case '1':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
                             entities.add(new Balloon(x, y, Sprite.balloom_left1.getFxImage()));
                             balloonList.add(new Balloon(x, y, Sprite.balloom_left1.getFxImage()));
+                            grid.setCell(x, y, true);
                             break;
                         case '2':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
                             entities.add(new Oneal(x, y, Sprite.oneal_left1.getFxImage()));
+                            grid.setCell(x, y, true);
                             break;
                         case 'x':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
                             stillObjects.add(new Portal(x, y, Sprite.portal.getFxImage()));
                             stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
                             brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            grid.setCell(x, y, true);
                             break;
                         case 'f':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
                             stillObjects.add(new Item(x, y, Sprite.powerup_flames.getFxImage(), "f"));
                             stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
                             brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            grid.setCell(x, y, true);
                             break;
                         case 's':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
                             stillObjects.add(new Item(x, y, Sprite.powerup_speed.getFxImage(), "s"));
                             stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
                             brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            grid.setCell(x, y, true);
                             break;
                         case 'b':
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
                             stillObjects.add(new Item(x, y, Sprite.powerup_bombs.getFxImage(), "b"));
                             stillObjects.add(new Brick(x, y, Sprite.brick.getFxImage()));
                             brickArrayList.add(new Brick(x, y, Sprite.brick.getFxImage()));
+                            grid.setCell(x, y, true);
                             break;
                         default:
                             stillObjects.add(new Grass(x, y, Sprite.grass.getFxImage()));
+                            grid.setCell(x, y, true);
                     }
                 }
             }

@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 import javafx.geometry.Rectangle2D;
 import uet.oop.bomberman.Enemy.Balloon;
+import uet.oop.bomberman.Enemy.Oneal;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
@@ -29,6 +30,12 @@ public class Brick extends Entity {
     public int isImpactBrickvsBomber(Balloon balloon){
         Rectangle2D rec1 = new Rectangle2D(x * 32, y * 32, width, height);
         Rectangle2D rec2 = new Rectangle2D((double)Math.round(balloon.getX()*10)/10 * 32, (double)Math.round(balloon.getY()*10)/10 * 32, balloon.getWidth(), balloon.getHeight());
+        if(rec1.intersects(rec2)) return 1;
+        return 0;
+    }
+    public int isImpactBrickvsBomber(Oneal oneal){
+        Rectangle2D rec1 = new Rectangle2D(x * 32, y * 32, width, height);
+        Rectangle2D rec2 = new Rectangle2D((double)Math.round(oneal.getX()*10)/10 * 32, (double)Math.round(oneal.getY()*10)/10 * 32, oneal.getWidth(), oneal.getHeight());
         if(rec1.intersects(rec2)) return 1;
         return 0;
     }

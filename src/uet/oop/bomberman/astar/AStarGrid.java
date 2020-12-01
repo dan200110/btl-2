@@ -12,24 +12,17 @@ public class AStarGrid<T> {
         gridCells = new AStarCell[rows][cols];
     }
 
-    public void setCell( T cell, int col, int row, boolean path) {
-        gridCells[row][col] =  new AStarCell<T>(col,row, path, cell);
+    public void setCell(int col, int row, boolean path) {
+        gridCells[row][col] =  new AStarCell<T>(col,row, path);
     }
 
     public AStarCell<T> getCell( int col, int row) {
         return gridCells[row][col];
     }
 
-    /**
-     * Get neighboring cells relative to the given cell. By default they are top/right/bottom/left.
-     * If allowDiagonals is enabled, then also top-left, top-right, bottom-left, bottom-right cells are in the results.
-     * @param cell
-     * @param allowDiagonals
-     * @return
-     */
-    public AStarCell<T>[] getNeighbors(AStarCell<T> cell, boolean allowDiagonals) {
+    public AStarCell<T>[] getNeighbors(AStarCell<T> cell) {
 
-        AStarCell<T>[] neighbors = new AStarCell[ allowDiagonals ? 8 : 4];
+        AStarCell<T>[] neighbors = new AStarCell[4];
 
         int currentColumn = cell.col;
         int currentRow = cell.row;
@@ -76,52 +69,6 @@ public class AStarGrid<T> {
                 neighbors[3] = gridCells[neighborRow][neighborColumn];
             }
         }
-
-        if (allowDiagonals) {
-
-            // top/left
-            neighborColumn = currentColumn - 1;
-            neighborRow = currentRow - 1;
-
-            if (neighborRow >= 0 && neighborColumn >= 0) {
-                if( gridCells[neighborRow][neighborColumn].isTraversable) {
-                    neighbors[4] = gridCells[neighborRow][neighborColumn];
-                }
-            }
-
-            // bottom/right
-            neighborColumn = currentColumn + 1;
-            neighborRow = currentRow + 1;
-
-            if (neighborRow < rows && neighborColumn < cols) {
-                if( gridCells[neighborRow][neighborColumn].isTraversable) {
-                    neighbors[5] = gridCells[neighborRow][neighborColumn];
-                }
-            }
-
-            // top/right
-            neighborColumn = currentColumn + 1;
-            neighborRow = currentRow - 1;
-
-            if (neighborRow >= 0 && neighborColumn < cols) {
-                if( gridCells[neighborRow][neighborColumn].isTraversable) {
-                    neighbors[6] = gridCells[neighborRow][neighborColumn];
-                }
-            }
-
-            // bottom/left
-            neighborColumn = currentColumn - 1;
-            neighborRow = currentRow + 1;
-
-            if (neighborRow < rows && neighborColumn >= 0) {
-                if( gridCells[neighborRow][neighborColumn].isTraversable) {
-                    neighbors[7] = gridCells[neighborRow][neighborColumn];
-                }
-            }
-
-        }
-
-
         return neighbors;
     }
 

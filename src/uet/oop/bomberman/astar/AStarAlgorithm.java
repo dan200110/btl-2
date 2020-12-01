@@ -19,7 +19,7 @@ public class AStarAlgorithm {
      * Find a path from start to goal using the A* algorithm
      */
     @SuppressWarnings("unchecked")
-    public List<AStarCell> getPath( AStarGrid grid, AStarCell start, AStarCell goal, boolean allowDiagonals) {
+    public List<AStarCell> getPath( AStarGrid grid, AStarCell start, AStarCell goal) {
 
         AStarCell current = null;
         boolean containsNeighbor;
@@ -62,7 +62,7 @@ public class AStarAlgorithm {
             closedSet.add( current);
 
             // for each neighbor in neighbor_nodes(current)
-            for( AStarCell neighbor: grid.getNeighbors( current, allowDiagonals)) {
+            for( AStarCell neighbor: grid.getNeighbors( current)) {
 
                 if( neighbor == null) {
                     continue;
