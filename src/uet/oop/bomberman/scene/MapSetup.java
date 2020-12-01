@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Cell;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import uet.oop.bomberman.Enemy.Balloon;
 import uet.oop.bomberman.Enemy.Oneal;
 import uet.oop.bomberman.astar.AStarCell;
@@ -33,7 +35,7 @@ public class MapSetup {
     public static int HEIGHT = 13;
     public static String level = "res/levels/Level1.txt";
 
-    //private static AStarGrid = new AStarGrid
+    private static AStarGrid grid = new AStarGrid(WIDTH, HEIGHT);
 
     public static void createMap() {
         try {
@@ -175,6 +177,7 @@ public class MapSetup {
         root.getChildren().add(canvas);
 
         s = new Scene(root);
+
         Gameloop.start(gc);
 
         createMap();

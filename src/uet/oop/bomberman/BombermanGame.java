@@ -3,6 +3,8 @@ package uet.oop.bomberman;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import uet.oop.bomberman.entities.Bomber;
+import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -26,6 +28,7 @@ public class BombermanGame extends Application {
         mediaPlayer.play();
         MapSetup.init();
 
+        Gameloop.setStage(stage);
         stage.setScene(MapSetup.getScene());
         stage.show();
     }

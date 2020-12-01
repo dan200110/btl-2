@@ -2,13 +2,16 @@ package uet.oop.bomberman.scene;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.stage.Stage;
 import uet.oop.bomberman.controls.PlayerController;
+import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
 
 public class Gameloop {
     public static int time = 24;
     public static int DeadLineofBreakingThings = 400 / 16;
     public static int animate;
+    public static Stage stage;
     private static void update() {
         PlayerController.handlePlayerMovements();
         for(int i = 0; i < MapSetup.getEntities().size(); i++) {
@@ -30,6 +33,7 @@ public class Gameloop {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
+                stage.setTitle("Lives: " + Bomber.lives);
                 render(gc);
                 update();
                 if (animate < time) animate++;
@@ -37,5 +41,9 @@ public class Gameloop {
             }
         };
         timer.start();
+    }
+
+    public static void setStage(Stage st) {
+        stage = st;
     }
 }
