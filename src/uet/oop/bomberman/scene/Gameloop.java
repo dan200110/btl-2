@@ -33,7 +33,7 @@ public class Gameloop {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                stage.setTitle("Lives: " + Bomber.lives);
+                handleTitle();
                 render(gc);
                 update();
                 if (animate < time) animate++;
@@ -45,5 +45,9 @@ public class Gameloop {
 
     public static void setStage(Stage st) {
         stage = st;
+    }
+
+    public static void handleTitle() {
+        stage.setTitle("Lives: " + Bomber.lives);
     }
 }
