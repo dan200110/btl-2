@@ -18,7 +18,7 @@ import java.util.List;
 
 public class Bomber extends Entity {
     private int speed = 2;
-    private int deadtime = Gameloop.DeadLineofBreakingThings + 3;
+    private int deadtime = Gameloop.DeadLineofBreakingThings + 10;
     public static int ALLOW_RUN = 0;
     public static int DISALLOW_RUN = 1;
     private boolean isDead = false;
@@ -294,7 +294,7 @@ public class Bomber extends Entity {
             if(MapSetup.getStillObjects().get(i) instanceof Bomb) {
                 Bomb bomb = (Bomb) MapSetup.getStillObjects().get(i);
                 if(Math.round(bomb.getX()) == Math.round(x) && Math.round(bomb.getY()) == Math.round(y)) {
-                    if (bomb.deadlineBomb <0 ) {
+                    if (bomb.deadlineBomb < 0) {
                         this.restart();
                         return;
                     }
@@ -304,8 +304,14 @@ public class Bomber extends Entity {
     }
 
     public void restart() {
-        sound.makeSound("Level_Start.mp3", 8).play();
-        isDead = true;
+        if (!isDead) {
+            isDead = true;
+            if (lives > 1) {
+                sound.makeSound("Level_Start.mp3", 8).play();
+                System.out.println("test");
+            }
+
+        }
     }
 
     @Override
@@ -320,12 +326,16 @@ public class Bomber extends Entity {
                     this.x = 1;
                     this.y = 1;
                     isDead = false;
-                    deadtime = Gameloop.DeadLineofBreakingThings + 3;
+                    deadtime = Gameloop.DeadLineofBreakingThings + 10;
                     img = Sprite.player_right.getFxImage();
-                } else if (deadtime < -5) {
-                    sound.makeSound("Ending.mp3", 8).play();
-                    Platform.exit();
-                    System.exit(0);
+                } else {
+                    this.x = -9999;
+                    this.y = -9999;
+                    if (deadtime == 0) sound.makeSound("Ending.mp3", 8).play();
+                    if (deadtime < - 3000/ 16) {
+                        Platform.exit();
+                        System.exit(0);
+                    }
                 }
 
             }
