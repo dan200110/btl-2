@@ -15,19 +15,19 @@ public class Item extends Entity{
         if (this.type.equals("f")) {
             if ((int) Math.round(bomber.getX()) == (int) Math.round(this.getX())
                     && (int) Math.round(bomber.getY()) == (int) Math.round(this.getY())) {
-                sound.Get_Item.play();
+                sound.makeSound("Get_Item.mp3", 8).play();
                 return "f"; }
         }
         if (this.type.equals("s")) {
             if ((int) Math.round(bomber.getX()) == (int) Math.round(this.getX())
                     && (int) Math.round(bomber.getY()) == (int) Math.round(this.getY())) {
-                sound.Get_Item.play();
+                sound.makeSound("Get_Item.mp3", 8).play();
                 return "s"; }
         }
         if (this.type.equals("b")) {
             if ((int) Math.round(bomber.getX()) == (int) Math.round(this.getX())
                     && (int) Math.round(bomber.getY()) == (int) Math.round(this.getY())) {
-                sound.Get_Item.play();
+                sound.makeSound("Get_Item.mp3", 8).play();
                 return "b"; }
         }
         return "*";

@@ -19,6 +19,7 @@ public class BombermanGame extends Application {
         URL url = BombermanGame.class.getResource("/sound/Invincibility.mp3");
         Media media = new Media(String.valueOf(url));
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(0.1);
         mediaPlayer.setOnEndOfMedia(new Runnable() {
             @Override
             public void run() {

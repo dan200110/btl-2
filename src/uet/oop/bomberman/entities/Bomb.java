@@ -6,6 +6,7 @@ import uet.oop.bomberman.Enemy.Balloon;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
+import uet.oop.bomberman.sound.Sound;
 
 public class Bomb extends Entity {
     private double width, height;
@@ -14,6 +15,7 @@ public class Bomb extends Entity {
     public static int sizeBomb = 1;
     public static int countBomb = 1;
     private boolean isExploded = false;
+    public Sound sound = new Sound();
     public Bomb(double x, double y, Image img) {
         super(x, y, img);
         this.width = img.getWidth();
@@ -52,10 +54,13 @@ public class Bomb extends Entity {
             //System.out.println( " Bom no o giua: " + deadlinebombExploding);
         }
         if (deadlinebombExploding <= 0) {
+
             MapSetup.getStillObjects().remove(this);
+
         }
 
         if (deadlineBomb <= 0 && isExploded == false) {
+            sound.makeSound("Bomb_Explodes.mp3", 8).play();
             isExploded = true;
             // tao lua
             /* Y tuong:

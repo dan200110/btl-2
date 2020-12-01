@@ -6,6 +6,7 @@ import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
+import uet.oop.bomberman.sound.Sound;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Random;
 
 public class Balloon extends Enemy {
     //private static int count = 10;
+    public Sound sound = new Sound();
     public double speedBallon = 0.02;
     private int deadtime = Gameloop.DeadLineofBreakingThings*2;
     private boolean isDead = false;
@@ -193,7 +195,9 @@ public class Balloon extends Enemy {
     }
 
     public void destroy() {
+        sound.makeSound("Kill_Enemy.mp3", 8).play();
         isDead = true;
         countBallon--;
+
     }
 }

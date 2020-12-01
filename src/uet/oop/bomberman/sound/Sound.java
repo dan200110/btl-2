@@ -7,11 +7,16 @@ import javafx.util.Duration;
 import java.net.URL;
 
 public class Sound {
-    public MediaPlayer Ending = makeSound("Ending.mp3");
-    public MediaPlayer Walk = makeSound("Walk.mp3");
-    public MediaPlayer Make_Bomb = makeSound("Make_Bomb.mp3");
-    public MediaPlayer Get_Damege = makeSound("Get_Damage.mp3");
-    public MediaPlayer Get_Item = makeSound("Get_Item.mp3", 8);
+//    private MediaPlayer Ending = makeSound("Ending.mp3");
+//    private MediaPlayer Walk = makeSound("Walk.mp3");
+//    private MediaPlayer Make_Bomb = makeSound("Make_Bomb.mp3");
+//    private MediaPlayer Get_Damege = makeSound("Get_Damage.mp3");
+//    private MediaPlayer Bomb_Explodes = makeSound("Bomb_Explodes.mp3");
+//    private MediaPlayer Game_Over = makeSound("Game_Over.mp3");
+//    public MediaPlayer Level_Complete = makeSound("Level_Complete.mp3");
+//    public MediaPlayer Level_Start = makeSound("Level_Start.mp3");
+//   public MediaPlayer Kill_Enemy = makeSound("Kill_Enemy.mp3");
+//    public MediaPlayer Get_Item = makeSound("Get_Item.mp3", 8);
 
     public void repeat(MediaPlayer mediaPlayer){
         mediaPlayer.setOnEndOfMedia(new Runnable() {

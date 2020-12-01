@@ -11,6 +11,8 @@ import uet.oop.bomberman.scene.Gameloop;
 import uet.oop.bomberman.scene.MapSetup;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import uet.oop.bomberman.sound.Sound;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class Bomber extends Entity {
     public static int DISALLOW_RUN = 1;
     private boolean isDead = false;
     public static int lives = 3;
-
+    public Sound sound = new Sound();
     public Bomber(double x, double y, Image img) {
         super(x, y, img);
     }
@@ -86,7 +88,9 @@ public class Bomber extends Entity {
                         }
                         System.out.println(count);
                         if (count == 0) {MapSetup.level="res/levels/Level2.txt";
-                            MapSetup.changeMap();}
+                            MapSetup.changeMap();
+                            sound.makeSound("Level_Complete.mp3", 8).play();
+                        }
                     }
                 }
             }
@@ -143,7 +147,9 @@ public class Bomber extends Entity {
                         }
                         System.out.println(count);
                         if (count == 0) {MapSetup.level="res/levels/Level2.txt";
-                            MapSetup.changeMap();}
+                            MapSetup.changeMap();
+                            sound.makeSound("Level_Complete.mp3", 8).play();
+                        }
                     }
                 }
             }
@@ -199,7 +205,9 @@ public class Bomber extends Entity {
                         }
                         System.out.println(count);
                         if (count == 0) {MapSetup.level="res/levels/Level2.txt";
-                            MapSetup.changeMap();}
+                            MapSetup.changeMap();
+                            sound.makeSound("Level_Complete.mp3", 8).play();
+                        }
                     }
                 }
             }
@@ -255,7 +263,9 @@ public class Bomber extends Entity {
                         }
                         System.out.println(count);
                         if (count == 0) {MapSetup.level="res/levels/Level2.txt";
-                            MapSetup.changeMap();}
+                            MapSetup.changeMap();
+                            sound.makeSound("Level_Complete.mp3", 8).play();
+                        }
                     }
                 }
             }
@@ -294,6 +304,7 @@ public class Bomber extends Entity {
     }
 
     public void restart() {
+        sound.makeSound("Level_Start.mp3", 8).play();
         isDead = true;
     }
 
@@ -312,6 +323,7 @@ public class Bomber extends Entity {
                     deadtime = Gameloop.DeadLineofBreakingThings + 3;
                     img = Sprite.player_right.getFxImage();
                 } else if (deadtime < -5) {
+                    sound.makeSound("Ending.mp3", 8).play();
                     Platform.exit();
                     System.exit(0);
                 }
