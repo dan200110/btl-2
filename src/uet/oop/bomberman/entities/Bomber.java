@@ -87,7 +87,7 @@ public class Bomber extends Entity {
                             }
                         }
                         System.out.println(count);
-                        if (count == 0) {MapSetup.level="res/levels/Level2.txt";
+                        if (count == 0) {MapSetup.map++;
                             MapSetup.changeMap();
                             sound.makeSound("Level_Complete.mp3", 8).play();
                         }
@@ -146,7 +146,7 @@ public class Bomber extends Entity {
                             }
                         }
                         System.out.println(count);
-                        if (count == 0) {MapSetup.level="res/levels/Level2.txt";
+                        if (count == 0) {MapSetup.map++;
                             MapSetup.changeMap();
                             sound.makeSound("Level_Complete.mp3", 8).play();
                         }
@@ -204,7 +204,7 @@ public class Bomber extends Entity {
                             }
                         }
                         System.out.println(count);
-                        if (count == 0) {MapSetup.level="res/levels/Level2.txt";
+                        if (count == 0) {MapSetup.map++;
                             MapSetup.changeMap();
                             sound.makeSound("Level_Complete.mp3", 8).play();
                         }
@@ -262,7 +262,7 @@ public class Bomber extends Entity {
                             }
                         }
                         System.out.println(count);
-                        if (count == 0) {MapSetup.level="res/levels/Level2.txt";
+                        if (count == 0) {MapSetup.map++;
                             MapSetup.changeMap();
                             sound.makeSound("Level_Complete.mp3", 8).play();
                         }

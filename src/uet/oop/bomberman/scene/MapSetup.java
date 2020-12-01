@@ -1,5 +1,6 @@
 package uet.oop.bomberman.scene;
 
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -33,6 +34,7 @@ public class MapSetup {
     private static List<Balloon> balloonList = new ArrayList<>();
     public static int WIDTH = 31 ;
     public static int HEIGHT = 13;
+    public static int map = 1;
     public static String level = "res/levels/Level1.txt";
 
     private static AStarGrid grid = new AStarGrid(WIDTH, HEIGHT);
@@ -105,6 +107,14 @@ public class MapSetup {
     public static void changeMap() {
         stillObjects.clear();
         entities.clear();
+        switch (map){
+            case 1: {level = "res/levels/Level1.txt"; break;}
+            case 2: {level = "res/levels/Level2.txt"; break;}
+            case 3: {level = "res/levels/Level3.txt"; break;}
+            default:
+                Platform.exit();
+                System.exit(0);
+        }
         try {
             BufferedReader reader = new BufferedReader(new FileReader(level));
             String a = reader.readLine();

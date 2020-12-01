@@ -48,6 +48,6 @@ public class Gameloop {
     }
 
     public static void handleTitle() {
-        stage.setTitle("Lives: " + Bomber.lives);
+        stage.setTitle("Lives: " + Bomber.lives + "                 Levels: " + MapSetup.map);
     }
 }

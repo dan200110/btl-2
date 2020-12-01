@@ -26,7 +26,7 @@ public class Balloon extends Enemy {
         tao 1 hg ngau nhien
 
      */
-    public static int countBallon = 3;
+
     private Random random = new Random();
 
     public boolean move(int orient, List<Entity> stillObject, List<Entity> entities) {
@@ -197,7 +197,6 @@ public class Balloon extends Enemy {
     public void destroy() {
         sound.makeSound("Kill_Enemy.mp3", 8).play();
         isDead = true;
-        countBallon--;
 
     }
 }

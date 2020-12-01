@@ -7,7 +7,6 @@ public class Portal extends Entity{
         super(x, y, img);
     }
     public static boolean isOpen = false;
-    int countMonster = Balloon.countBallon;
     @Override
     public void update() {
 
@@ -19,8 +18,5 @@ public class Portal extends Entity{
         }
         return 0;
     }
-    public boolean isOpen(){
-        if (countMonster == 0) {return true;}
-        return false;
-    }
+
 }
